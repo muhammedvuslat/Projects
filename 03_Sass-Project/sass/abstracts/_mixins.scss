@@ -1,0 +1,10 @@
+@mixin transition($sec) {
+  transition: all $sec;
+}
+@mixin bgImage($height, $url) {
+  height: $height;
+  width: 100%;
+  background: url($url);
+  background-position: center center;
+  background-size: cover;
+}
