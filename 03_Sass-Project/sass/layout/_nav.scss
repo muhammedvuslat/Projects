@@ -1,0 +1,25 @@
+.nav {
+  //   border: 2px solid red;
+  padding: 1rem;
+  height: 10vh;
+  &__list {
+    text-align: right;
+  }
+  &__item {
+    display: inline;
+    padding: 1.5rem;
+  }
+  &__link {
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: $font-family;
+    @include transition(1s);
+
+    &:hover {
+      color: #f27289;
+    }
+    &--active {
+      color: $secondary-color;
+    }
+  }
+}
