@@ -1,6 +1,6 @@
 <h1>HTML & CSS Projects</h1>
 <hr />
-<h2>This repository is for HTML & CSS projects</h2>
+<h2>This repository is for S <span style="color:rgba(241,89,49,255) ;">HTML</span> & CSS projects</h2>
 <ul>
   <li>
     <a
