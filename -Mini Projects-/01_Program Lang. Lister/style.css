@@ -1,0 +1,22 @@
+body {
+  background-color: #252525;
+}
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0d0d0d;
+  height: 3rem;
+  color: #d9ae5f;
+}
+.btn {
+  border-radius: 20px;
+  border: 5px solid;
+  background-color: #400101;
+  color: #d9ae5f;
+  font-weight: 600;
+  font-family: "Radio Canada", sans-serif;
+}
+input {
+  background-color: #400101;
+}
