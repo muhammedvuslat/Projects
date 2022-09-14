@@ -19,7 +19,7 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="text-center">Programing Language Lister</h1>
+      <h1 class="text-center text-warning">Programing Language Lister</h1>
       <main>
         <section class="d-flex justify-content-center gap-2 mt-4">
           <input
@@ -27,9 +27,13 @@
             class="lang-input"
             placeholder="Please enter a language"
           />
-          <button id="add-btn" class="btn">ADD</button>
-          <button id="delete-btn" class="btn">DELETE</button>
+
+          <button id="add-btn" class="btn text-warning">ADD</button>
+          <button id="delete-btn" class="btn text-warning">DELETE</button>
+
+          <br />
         </section>
+        <section id="lang-list" class="text-warning"></section>
       </main>
     </div>
 

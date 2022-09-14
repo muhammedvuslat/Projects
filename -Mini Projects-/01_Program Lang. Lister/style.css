@@ -7,7 +7,6 @@ h1 {
   align-items: center;
   background-color: #0d0d0d;
   height: 3rem;
-  color: #d9ae5f;
 }
 .btn {
   border-radius: 20px;
@@ -19,4 +18,7 @@ h1 {
 }
 input {
   background-color: #400101;
+}
+.lang-input {
+  color: #d9ae5f;
 }
