@@ -16,8 +16,10 @@ footer.horizontal {
   align-items: flex-end;
   padding: 2rem;
   margin-bottom: 1rem;
-
-  @extend .link-style;
+  .social-icons {
+    display: flex;
+    @extend .link-style;
+  }
 }
 footer.vertical {
   // border: 2px solid red;

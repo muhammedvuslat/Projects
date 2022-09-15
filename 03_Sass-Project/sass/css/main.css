@@ -72,11 +72,61 @@
   margin: 0.3rem 0;
 }
 
-.link-style a, footer.vertical .social-icons a, footer.horizontal a {
+.project-bgImg-container {
+  height: 40vh;
+  width: 100%;
+  background: url("https://media.istockphoto.com/photos/close-up-back-rear-behind-photo-handsome-he-him-his-guy-typing-it-picture-id1163541604?k=20&m=1163541604&s=612x612&w=0&h=QFDdpqVn_D9mH4lVNnP-_IHCR6efdGSANt6G9oXrF1I=");
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.project-bgImg-container .projects__bio-text {
+  text-align: center;
+  margin-bottom: 50vh;
+  font-size: 2rem;
+}
+.project-bgImg-container .projects__bio-text .my {
+  color: #8c2323;
+}
+
+.projects__items {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2rem 5rem;
+  gap: 1rem 0;
+}
+.projects__item {
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  border-bottom: 5px solid #8c2323;
+}
+.projects__item img {
+  width: 100%;
+}
+.projects__item::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-color: #8c2323;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.projects__item:hover::after {
+  opacity: 0.7;
+}
+
+.link-style a, footer.vertical .social-icons a, footer.horizontal .social-icons a {
   padding: 0.4rem;
   transition: all 1s;
 }
-.link-style a:hover, footer.vertical .social-icons a:hover, footer.horizontal a:hover {
+.link-style a:hover, footer.vertical .social-icons a:hover, footer.horizontal .social-icons a:hover {
   color: #8c2323;
   transform: scale(2);
 }
@@ -88,6 +138,9 @@ footer.horizontal {
   align-items: flex-end;
   padding: 2rem;
   margin-bottom: 1rem;
+}
+footer.horizontal .social-icons {
+  display: flex;
 }
 
 footer.vertical {
