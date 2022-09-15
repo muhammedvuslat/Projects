@@ -1,0 +1,63 @@
+@include media-xsm {
+  .nav {
+    padding: 0.5rem;
+    &__list {
+      text-align: center;
+    }
+    &__item {
+      padding-right: 0.7rem;
+    }
+    .nav__link {
+      font-size: 0.9rem;
+    }
+  }
+}
+@include media-sm {
+  .nav {
+    padding: 0.7rem;
+    &__list {
+      text-align: right;
+    }
+    &__item {
+      padding-right: 1rem;
+    }
+    .nav__link {
+      font-size: 1rem;
+    }
+  }
+}
+
+@include media-md {
+  .nav {
+    &__item {
+      padding-right: 1.3rem;
+    }
+    .nav__link {
+      font-size: 1.3rem;
+    }
+  }
+  .projects__item {
+    width: 100%;
+  }
+}
+
+@include media-lg {
+  .nav {
+    &__item {
+      padding-right: 1.5rem;
+    }
+    .nav__link {
+      font-size: 1.5rem;
+    }
+  }
+
+  .projects__item {
+    width: 50%;
+  }
+}
+
+@include media-xl {
+  .projects__item {
+    width: 33%;
+  }
+}
