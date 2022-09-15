@@ -23,17 +23,3 @@
     }
   }
 }
-
-footer.vertical {
-  border: 2px solid red;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding: 2rem;
-  margin-bottom: 1rem;
-  .social-icons {
-    display: flex;
-    flex-direction: column;
-    // position: fixed;
-  }
-}

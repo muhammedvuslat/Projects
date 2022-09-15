@@ -1,9 +1,10 @@
 .link-style {
   a {
     padding: 0.4rem;
-    @include transition(1.5s);
+    @include transition(1s);
     &:hover {
       color: $secondary-color;
+      transform: scale(2);
     }
   }
 }
@@ -15,5 +16,28 @@ footer.horizontal {
   align-items: flex-end;
   padding: 2rem;
   margin-bottom: 1rem;
+
   @extend .link-style;
+}
+footer.vertical {
+  // border: 2px solid red;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  .social-icons {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 1rem;
+    @extend .link-style;
+  }
+  .copyright {
+    position: fixed;
+    bottom: 1rem;
+    right: 3rem;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
 }

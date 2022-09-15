@@ -1,10 +1,12 @@
 .about-bgImg-container {
-  @include bgImage(100vh, $main-bgImage-path);
+  @include bgImage(80vh, $main-bgImage-path);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   .about__bio-image {
     text-align: center;
+    width: 85vw;
+    margin: 0 auto;
     h2 {
       font-size: 3rem;
       color: $secondary-color;
@@ -13,9 +15,6 @@
       font-size: 1.2rem;
       margin: 2rem;
     }
-  }
-  .about__span {
-    color: $text-color;
   }
 }
 
