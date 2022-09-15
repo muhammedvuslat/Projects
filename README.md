@@ -36,7 +36,7 @@
           <!-- Satır 3 -->
             <a
             href="https://github.com/muhammedvuslat/Projects/tree/master/03_Sass-Project"
-            >03_Sass-Project</a
+            >03_Porfolio_Sass-Project</a
           >
         </td>
     </tr>
