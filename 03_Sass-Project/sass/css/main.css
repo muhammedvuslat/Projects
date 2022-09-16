@@ -1,17 +1,265 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 3 | @import "./pages/home", "./pages/about", "./pages/contacts", "./pages/projects";
- *   |                                          ^^^^^^^^^^^^^^^^^^
- *   '
- *   main.scss 3:42  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 3 \2502  @import \"./pages/home\", \"./pages/about\", \"./pages/contacts\", \"./pages/projects\";\d\a   \2502                                           ^^^^^^^^^^^^^^^^^^\a   \2575 \a   main.scss 3:42  root stylesheet";
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+.home-bgImg-container {
+  height: 100vh;
+  width: 100%;
+  background: url("https://media.istockphoto.com/photos/close-up-back-rear-behind-photo-handsome-he-him-his-guy-typing-it-picture-id1163541604?k=20&m=1163541604&s=612x612&w=0&h=QFDdpqVn_D9mH4lVNnP-_IHCR6efdGSANt6G9oXrF1I=");
+  background-position: center center;
+  background-size: cover;
+}
+
+.home {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.home__name {
+  font-size: 5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #f2f2f2;
+}
+.home__name--last {
+  color: #8c2323;
+  font-weight: 600;
+}
+
+.about-bgImg-container {
+  height: 80vh;
+  width: 100%;
+  background: url("https://media.istockphoto.com/photos/close-up-back-rear-behind-photo-handsome-he-him-his-guy-typing-it-picture-id1163541604?k=20&m=1163541604&s=612x612&w=0&h=QFDdpqVn_D9mH4lVNnP-_IHCR6efdGSANt6G9oXrF1I=");
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.about-bgImg-container .about__bio-image {
+  text-align: center;
+  width: 85vw;
+  margin: 0 auto;
+}
+.about-bgImg-container .about__bio-image h2 {
+  font-size: 3rem;
+  color: #8c2323;
+}
+.about-bgImg-container .about__bio-image p {
+  font-size: 1.2rem;
+  margin: 2rem;
+}
+
+.about {
+  width: 75vw;
+  margin: 2rem auto;
+}
+.about .about__job {
+  padding: 1rem;
+  border-bottom: 5px solid #8c2323;
+  background: #5a5a5a;
+}
+.about .about__job h2,
+.about .about__job h3 {
+  margin: 0.5rem 0;
+}
+.about .about__job h6 {
+  margin: 0.3rem 0;
+}
+
+.project-bgImg-container {
+  height: 40vh;
+  width: 100%;
+  background: url("https://media.istockphoto.com/photos/close-up-back-rear-behind-photo-handsome-he-him-his-guy-typing-it-picture-id1163541604?k=20&m=1163541604&s=612x612&w=0&h=QFDdpqVn_D9mH4lVNnP-_IHCR6efdGSANt6G9oXrF1I=");
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.project-bgImg-container .projects__bio-text {
+  text-align: center;
+  margin-bottom: 50vh;
+  font-size: 2rem;
+}
+.project-bgImg-container .projects__bio-text .my {
+  color: #8c2323;
+}
+
+.projects__items {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2rem 5rem;
+  gap: 1rem 0;
+}
+.projects__item {
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  border-bottom: 5px solid #8c2323;
+}
+.projects__item img {
+  width: 100%;
+}
+.projects__item::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-color: #8c2323;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.projects__item:hover::after {
+  opacity: 0.7;
+}
+
+.link-style a, footer.vertical .social-icons a, footer.horizontal .social-icons a {
+  padding: 0.4rem;
+  transition: all 1s;
+}
+.link-style a:hover, footer.vertical .social-icons a:hover, footer.horizontal .social-icons a:hover {
+  color: #8c2323;
+  transform: scale(2);
+}
+
+footer.horizontal {
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+footer.horizontal .social-icons {
+  display: flex;
+}
+
+footer.vertical {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+footer.vertical .social-icons {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 1rem;
+}
+footer.vertical .copyright {
+  position: fixed;
+  bottom: 1rem;
+  right: 3rem;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.nav {
+  padding: 1rem;
+  height: 10vh;
+}
+.nav__list {
+  text-align: right;
+}
+.nav__item {
+  display: inline;
+  padding: 1.5rem;
+}
+.nav__link {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 1s;
+}
+.nav__link:hover {
+  color: #c43535;
+}
+.nav__link--active {
+  color: #8c2323;
+}
+
+@media screen and (min-width: 0px) {
+  .nav {
+    padding: 0.5rem;
+  }
+  .nav__list {
+    text-align: center;
+  }
+  .nav__item {
+    padding-right: 0.7rem;
+  }
+  .nav .nav__link {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (min-width: 576px) {
+  .nav {
+    padding: 0.7rem;
+  }
+  .nav__list {
+    text-align: right;
+  }
+  .nav__item {
+    padding-right: 1rem;
+  }
+  .nav .nav__link {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .nav__item {
+    padding-right: 1.3rem;
+  }
+  .nav .nav__link {
+    font-size: 1.3rem;
+  }
+  .projects__item {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .nav__item {
+    padding-right: 1.5rem;
+  }
+  .nav .nav__link {
+    font-size: 1.5rem;
+  }
+  .projects__item {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .projects__item {
+    width: 33%;
+  }
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1;
+  color: #f2f2f2;
+  background-color: #272727;
+  height: 90vh;
+}
+
+a {
+  text-decoration: none;
+  color: #f2f2f2;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+}
+
+/*# sourceMappingURL=main.css.map */
