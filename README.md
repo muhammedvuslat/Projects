@@ -45,7 +45,7 @@
         <td>
           <!-- Satır 4 -->
             <a
-            href="[https://github.com/muhammedvuslat/Projects/tree/master/03_Sass-Project](https://github.com/muhammedvuslat/Projects/tree/master/04_Loan-Calculation)"
+            href="https://github.com/muhammedvuslat/Projects/tree/master/04_Loan-Calculation"
             >04_Loan-Calculation</a
           >
         </td>
