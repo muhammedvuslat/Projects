@@ -16,12 +16,30 @@ const productsDiv = document.querySelector(".products");
 
 productsDiv.addEventListener("click", (event) => {
   if (event.target.className == "fa-solid fa-minus") {
-    console.log("Minus");
+    if (event.target.parentElement.querySelector(".quantity").innerText > 1) {
+      event.target.parentElement.querySelector(".quantity").innerText--;
+    } else {
+      if (
+        confirm(
+          `${
+            event.target.parentElement.parentElement.querySelector("h2")
+              .innerText
+          } will be removed?`
+        )
+      ) {
+        event.target.parentElement.parentElement.parentElement.remove();
+      }
+    }
   } else if (event.target.className == "fa-solid fa-plus") {
-    console.log("Plus");
+    event.target.parentElement.querySelector(".quantity").innerText++;
   } else if (event.target.className == "remove-product") {
-    console.log("Remove");
+    event.target.parentElement.parentElement.parentElement.remove();
+    alert(
+      `${
+        event.target.parentElement.parentElement.querySelector("h2").innerText
+      } product has been removed!`
+    );
   } else {
-    console.log("Other click");
+    // console.log("Other click");
   }
 });
