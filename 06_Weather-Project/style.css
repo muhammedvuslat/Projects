@@ -1,0 +1,12 @@
+:root {
+  --bg_color: #048abf;
+  --text_color: #d5e5f2;
+}
+body {
+  background-color: var(--bg_color);
+}
+/*!–––––––––––––––––––––––––FOOTER––––––––––––––––––––––––– */
+.logo {
+  width: 250px;
+  height: 200px;
+}
