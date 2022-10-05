@@ -3,6 +3,7 @@
   --text_light: #d5e5f2;
   --blue: #043f74;
   --dark_blue: #0d223b;
+  --text_gray: #6a8aa6;
 }
 * {
   margin: 0;
@@ -83,9 +84,40 @@ ul {
   max-width: 450px;
   min-height: 40px;
 }
-
+/*!–––––––––––––––––––––––––SECTİON––––––––––––––––––––––––– */
+.ajax-section {
+  border: 2px solid red; /*!sil */
+  margin: 70px 0 20px;
+  padding: 70px 0 20px; /**! sil */
+}
+.ajax-section .cities {
+  border: 2px solid red;
+  display: grid;
+  grid-gap: 32px 20px;
+  grid-template-columns: repeat(4 1fr); /*! repeat colon tekrarı sağlar 4 */
+  padding: 70px 0 20px; /**! sil */
+}
+.ajax-section .city {
+  position: relative;
+  padding: 40px 10%;
+  border-radius: 35px;
+  background-color: var(--text_light);
+  color: var(--text_gray);
+}
+.ajax-section .city::after {
+  content: "";
+  width: 94%;
+  height: 50px;
+  position: absolute;
+  bottom: -12px;
+  left: 3%;
+  z-index: -1;
+  opacity: 0.3;
+  border-radius: 35px;
+  background-color: var(--text_light);
+}
 /*!–––––––––––––––––––––––––FOOTER––––––––––––––––––––––––– */
 .logo {
-  width: 250px;
-  height: 200px;
+  width: 200px;
+  height: 150px;
 }
