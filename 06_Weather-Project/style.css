@@ -38,6 +38,10 @@ ul {
   margin: 0 auto;
   padding: 0 15px;
 }
+.logo {
+    width: 200px;
+    height: 150px;
+  }
 
 /*!–––––––––––––––––––––––––SECTİON––––––––––––––––––––––––– */
 .top-banner {
@@ -72,10 +76,10 @@ ul {
   margin: 1.5rem 0.5rem 0.5rem 1rem;
   border-radius: 20px;
   background-color: var(--blue);
+  transition: background 0.4s ease-in-out;
 }
 .top-banner form button:hover {
   background-color: var(--dark_blue);
-  border: 1px solid white;
 }
 .top-banner form .msg {
   position: absolute;
@@ -86,16 +90,14 @@ ul {
 }
 /*!–––––––––––––––––––––––––SECTİON––––––––––––––––––––––––– */
 .ajax-section {
-  border: 2px solid red; /*!sil */
   margin: 70px 0 20px;
   padding: 70px 0 20px; /**! sil */
 }
 .ajax-section .cities {
-  border: 2px solid red;
   display: grid;
   grid-gap: 32px 20px;
-  grid-template-columns: repeat(4 1fr); /*! repeat colon tekrarı sağlar 4 */
-  padding: 70px 0 20px; /**! sil */
+  grid-template-columns: no-repeat;
+  ); /*! repeat colon tekrarı sağlar 4 */
 }
 .ajax-section .city {
   position: relative;
@@ -116,8 +118,81 @@ ul {
   border-radius: 35px;
   background-color: var(--text_light);
 }
-/*!–––––––––––––––––––––––––FOOTER––––––––––––––––––––––––– */
-.logo {
-  width: 200px;
-  height: 150px;
+.ajax-section figcaption {
+    /*! Js bekle */
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .ajax-section .city-temp {
+    /*! Js bekle */
+    font-size: 5rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: var(--text_dark);
+  }
+  
+  .ajax-section .city sup {
+    /*! Js bekle */
+    font-size: 0.5em;
+  }
+  
+  .ajax-section .city-name sup {
+    /*! Js bekle */
+    padding: 0.2em 0.6em;
+    border-radius: 30px;
+    color: var(--text_light);
+    background: var(--orange);
+  }
+  
+  .ajax-section .city-icon {
+    /*! Js bekle */
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+  }
+  
+/*!–––––––––––––––––––––––––MQ & RESPONSİVE––––––––––––––––––––––––– */
+@media screen and (max-width: 1000px) {
+    body{
+        padding: 30px;
+    }
 }
+@media screen and (max-width: 700px) {
+    .heading, .ajax-section, .city-temp{
+        font-size: 3rem;
+    }
+    .logo{
+        width: 180px;
+        height: 130px;
+    }
+    .ajax-section {
+        margin-top: 20px
+    }
+    .top-banner form{
+        flex-direction: column ;
+        align-items: center;
+    }
+    .top-banner form input{
+        width: 100%;
+    }
+    .top-banner form button{
+        margin: 20px 0 0 0 ;
+        width: 80%;
+    }
+    .top-banner form .msg{
+        position:static;
+        max-width:none ;
+        min-width: 0;
+        margin-top: 10px;
+    }    
+}
+@media screen and (max-width: 500px) {
+    body{
+        padding: 15px ;
+    }
+    
+}
+/*!–––––––––––––––––––––––––FOOTER––––––––––––––––––––––––– */
+
