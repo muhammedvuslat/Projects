@@ -16,15 +16,16 @@
 }
 body {
   font: 1rem/1.3;
-  background-size: contain;
+  background: linear-gradient(
+    117deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 30%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  background-size: 100% 200%;
   padding: 10px;
 }
-.snow {
-  width: 100%;
-  height: 100%;
-  background-color: #043f74;
-  background-attachment: fixed;
-}
+
 button {
   cursor: pointer;
 }
@@ -116,28 +117,15 @@ ul {
 .ajax-section .city {
   position: relative;
   padding: 40px 10%;
-  background: rgba(6, 128, 165, 0.23);
+  background: rgba(33, 193, 204, 0.2);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(1.5px);
-  -webkit-backdrop-filter: blur(1.5px);
+  backdrop-filter: blur(2.4px);
+  -webkit-backdrop-filter: blur(2.4px);
 
   color: var(--text_dark);
 }
-.ajax-section .city::after {
-  content: "";
-  width: 94%;
-  height: 15px;
-  position: absolute;
-  bottom: -12px;
-  left: 3%;
-  z-index: -1;
-  opacity: 0.3;
-  border-radius: 35px;
-  background-color: rgba(46, 16, 168, 0.486);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1.5px);
-}
+
 .ajax-section figcaption {
   /*! Js bekle */
   margin-top: 10px;
