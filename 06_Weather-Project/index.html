@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <section class="top-banner">
@@ -17,18 +23,27 @@
         <form>
           <input type="text" placeholder="Search for a city" autofocus />
           <button type="submit">Search</button>
-          <span class="msg"><h2>merhaba</h2></span>
+          <span class="msg"><h2></h2></span>
         </form>
       </div>
     </section>
     <section class="ajax-section">
       <div class="container">
         <ul class="cities">
-          <li class="city">merhaba</li>
-          <!-- Sil -->
-          <li class="city">merhaba</li>
-          <li class="city">merhaba</li>
-
+          <li class="city">
+            <h2 class="city-name" data-name="Ankara, TR">
+              <span>Ankara</span>
+              <sup>TR</sup>
+            </h2>
+            <div class="city-temp">15<sup>°C</sup></div>
+            <figure>
+              <img
+                class="city-icon"
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/03d.svg"
+              />
+              <figcaption>parçalı az bulutlu</figcaption>
+            </figure>
+          </li>
           <!-- Sil -->
         </ul>
       </div>
