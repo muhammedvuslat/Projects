@@ -10,7 +10,9 @@
         <th>Mini Project</th>
     </tr>
     <tr>
-        <td><!-- Satır 1 --></td>
+        <td><a
+      href="https://github.com/muhammedvuslat/Projects/tree/master/1_React%20Project/01_Tour%20-Places/tour-places"
+      >01_Tour-places</a</td>
         <td >          
             <a
       href="https://github.com/muhammedvuslat/Projects/tree/master/2_HTML%26CSS%26JS%20Project/01_Survey-form"
