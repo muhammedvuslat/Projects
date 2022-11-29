@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import TutorailList from "../components/TutorialList";
+import TutorialList from "../components/TutorialList";
 
 const Home = () => {
   const [tutorials, setTutorials] = useState([]);
@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <>
-      <TutorailList />
+      <TutorialList tutor={tutorials} getTutorials={getTutorials} />
     </>
   );
 };
