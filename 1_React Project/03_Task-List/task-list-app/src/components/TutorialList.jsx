@@ -14,7 +14,7 @@ const TutorailList = () => {
           </tr>
         </thead>
         <tbody>
-          {tutor?.map((item) => {
+          {[0, 1, 2, 4]?.map((item) => {
             const { id, title, description } = item;
             return (
               <tr key={id}>
@@ -22,7 +22,13 @@ const TutorailList = () => {
                 <td>{title}</td>
                 <td>{description}</td>
                 <td>
-                  <FaEdit />
+                  <FaEdit
+                    size={20}
+                    type="button"
+                    data-bs-target="#edit-modal"
+                    data-bs-toggle="modal"
+                    className="me-2 text-success"
+                  />
                 </td>
                 <td>{description}</td>
               </tr>
