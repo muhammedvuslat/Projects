@@ -1,7 +1,12 @@
 import axios from "axios";
 import { FaEdit } from "react-icons/fa";
+import { AiFillDelete } from "react-icons/ai";
+import { useState } from "react";
 
-const TutorailList = () => {
+const TutorialList = ({ tutor, getTutorials }) => {
+  const [editItem, setEditItem] = useState("");
+  console.log(tutor);
+
   return (
     <div className="contaniner mt-4 ">
       <table className="table table-striped ">
@@ -14,7 +19,7 @@ const TutorailList = () => {
           </tr>
         </thead>
         <tbody>
-          {[0, 1, 2, 4]?.map((item) => {
+          {tutor?.map((item) => {
             const { id, title, description } = item;
             return (
               <tr key={id}>
@@ -29,8 +34,12 @@ const TutorailList = () => {
                     data-bs-toggle="modal"
                     className="me-2 text-success"
                   />
+                  <AiFillDelete
+                    size={22}
+                    type="button"
+                    className="text-danger"
+                  />
                 </td>
-                <td>{description}</td>
               </tr>
             );
           })}
@@ -40,4 +49,4 @@ const TutorailList = () => {
   );
 };
 
-export default TutorailList;
+export default TutorialList;
