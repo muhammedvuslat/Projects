@@ -2,10 +2,20 @@ import axios from "axios";
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import { useState } from "react";
+import EditTutorial from "./EditTutorial";
 
 const TutorialList = ({ tutor, getTutorials }) => {
   const [editItem, setEditItem] = useState("");
-  console.log(tutor);
+  const deleteTutorial = async (id) => {
+    const url = "https://6384a20c4ce192ac605e5da9.mockapi.io/api/vtask";
+
+    try {
+      await axios.delete(`${url}/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+    getTutorials();
+  };
 
   return (
     <div className="contaniner mt-4 ">
@@ -30,14 +40,15 @@ const TutorialList = ({ tutor, getTutorials }) => {
                   <FaEdit
                     size={20}
                     type="button"
-                    data-bs-target="#edit-modal"
                     data-bs-toggle="modal"
+                    data-bs-target="#edit-modal"
                     className="me-2 text-success"
                   />
                   <AiFillDelete
                     size={22}
                     type="button"
                     className="text-danger"
+                    onClick={() => deleteTutorial(id)}
                   />
                 </td>
               </tr>
@@ -45,6 +56,7 @@ const TutorialList = ({ tutor, getTutorials }) => {
           })}
         </tbody>
       </table>
+      <EditTutorial />
     </div>
   );
 };
