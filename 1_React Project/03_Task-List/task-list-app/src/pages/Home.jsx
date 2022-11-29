@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import AddTutorial from "../components/AddTutorial";
 import TutorialList from "../components/TutorialList";
 
 const Home = () => {
@@ -9,9 +10,7 @@ const Home = () => {
   const getTutorials = async () => {
     try {
       const { data } = await axios(url);
-      console.log(data);
       setTutorials(data);
-      console.log(tutorials);
     } catch (error) {
       console.log(error);
     }
@@ -22,6 +21,7 @@ const Home = () => {
 
   return (
     <>
+      <AddTutorial getTutorials={getTutorials} />
       <TutorialList tutor={tutorials} getTutorials={getTutorials} />
     </>
   );
