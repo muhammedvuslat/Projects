@@ -43,6 +43,7 @@ const TutorialList = ({ tutor, getTutorials }) => {
                     data-bs-toggle="modal"
                     data-bs-target="#edit-modal"
                     className="me-2 text-success"
+                    onClick={() => setEditItem(item)}
                   />
                   <AiFillDelete
                     size={22}
@@ -56,7 +57,7 @@ const TutorialList = ({ tutor, getTutorials }) => {
           })}
         </tbody>
       </table>
-      <EditTutorial />
+      <EditTutorial editItem={editItem} getTutorials={getTutorials} />
     </div>
   );
 };
