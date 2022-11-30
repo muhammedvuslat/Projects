@@ -19,7 +19,7 @@ const TutorialList = ({ tutor, getTutorials }) => {
 
   return (
     <div className="contaniner mt-4 ">
-      <table className="table table-striped ">
+      <table className="table table-striped m-3 ">
         <thead>
           <tr>
             <th scope="col">İd</th>
