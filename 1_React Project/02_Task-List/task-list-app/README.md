@@ -20,12 +20,12 @@ Created a Tour Project App using ReactJS
 ## The following topics were covered on the basis of the project;
 - HTML
 
--BOOTSTRAP
+- BOOTSTRAP
 
 - JS
 
 - ReactJS
 
--API
+- API
 
--POSTMAN
+- POSTMAN
