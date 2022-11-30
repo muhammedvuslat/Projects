@@ -6,7 +6,7 @@ via API
 - GET
 - POST
 - DEL
-- PUT
+- PUT <br>
 I aimed to increase my API knowledge experience by doing
 
 ## Website GIF image
