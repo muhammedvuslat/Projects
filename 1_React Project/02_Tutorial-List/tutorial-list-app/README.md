@@ -3,10 +3,10 @@
 ## Description
 Within the scope of this project, I aimed to provide a training list control.
 via API
--GET
--POST
--DEL
--PUT
+- GET
+- POST
+- DEL
+- PUT
 I aimed to increase my API knowledge experience by doing
 
 ## Website GIF image
