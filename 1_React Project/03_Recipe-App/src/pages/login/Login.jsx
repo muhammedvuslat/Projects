@@ -26,7 +26,7 @@ const Login = () => {
     <LoginContainer>
       <FormContainer>
         <StyledImg src={meal} />
-        <Header>{"Welcome"} Recipe Login</Header>
+        <Header>{"Brendan"} Recipe Login</Header>
         <StyledForm onSubmit={handleSubmit}>
           <StyledInput placeholder="Enter Username" type="text" />
           <StyledInput placeholder="Enter Password" type="password" />
