@@ -1,11 +1,19 @@
-import React from 'react'
+import React from "react";
+import "./Cards.style";
+import { Card, Header, MainContainer } from "./Cards.style";
 
-const Cards = () => {
+const Cards = ({ recipes }) => {
   return (
-    <div>
-      Cards
-    </div>
-  )
-}
+    <MainContainer wrap="wrap">
+      {recipes.map(({ recipe }, index) => {
+        return (
+          <Card key={index}>
+            <Header>{recipe.label} </Header>
+          </Card>
+        );
+      })}
+    </MainContainer>
+  );
+};
 
-export default Cards
+export default Cards;
