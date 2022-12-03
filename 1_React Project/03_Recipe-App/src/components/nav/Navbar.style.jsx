@@ -26,7 +26,7 @@ export const Menu = styled(Flex)`
     overflow: hidden;
   }
 `;
-export const MenuLink = styled(Flex)`
+export const MenuLink = styled(Link)`
   text-align: center;
   padding: 1rem 2rem;
   cursor: pointer;
