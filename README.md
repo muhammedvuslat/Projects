@@ -8,6 +8,7 @@
         <th>React Project</th>
         <th>HTML&CSS&JS Project</th>
         <th>Mini Project</th>
+        <th>Django Project</th>
     </tr>
     <tr>
         <td><a
@@ -23,6 +24,10 @@
           <a
       href="https://github.com/muhammedvuslat/Projects/tree/master/3_Mini%20Projects/01_Program%20Lang.%20Lister"
       >01_Program-Lang.-Selec.</a</td>
+      <td>
+          <a
+      href="https://github.com/muhammedvuslat/Projects/tree/master/4_Django%20Projects"
+      >01_Todo-App-Back-End</a</td>
     </tr>
     <tr>
         <td><a href="https://github.com/muhammedvuslat/Projects/tree/master/1_React%20Project/02_Task-List/task-list-app">02_Tutorial-List</a></td>
