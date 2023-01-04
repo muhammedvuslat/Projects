@@ -1,4 +1,5 @@
 from django.urls import path,include
+from rest_framework import routers
 
 from .views import (
     #!FBV
@@ -8,7 +9,14 @@ from .views import (
     #!CBV
     Todos,
     TodoDetail,
+    #!MVS(ModelViewSet)
+    TodoMVS
 )
+
+router = routers.DefaultRouter()
+router.register('todomvs', TodoMVS)
+
+
 
 
 urlpatterns = [
@@ -17,4 +25,5 @@ urlpatterns = [
     path('detail/<int:id>',todo_detail),
     path('list_class/',Todos.as_view()),
     path('detail_class/<int:id>',TodoDetail.as_view()),
+    path('',include(router.urls)),
 ]
