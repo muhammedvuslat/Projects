@@ -37,6 +37,7 @@
             >02_Google-Landing-Page</a
           ></td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
          <td><!-- Satır 3 --></td>
@@ -46,6 +47,7 @@
             >03_Porfolio_Sass-Project</a
           >
         </td>
+        <td></td>
         <td></td>
     </tr>
     <tr>
@@ -57,6 +59,7 @@
           >
         </td>
         <td></td>
+        <td></td>
     </tr>
     <tr>
          <td><!-- Satır 4 --></td>
@@ -66,6 +69,7 @@
             >05_Checkout-Page</a
           >
         </td>
+        <td></td>
         <td></td>
     </tr>
             
