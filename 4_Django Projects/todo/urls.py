@@ -21,9 +21,13 @@ router.register('todomvs', TodoMVS)
 
 urlpatterns = [
     path('',todo_home),
+    #!FBV
     path('list/',todo_list_crate),
     path('detail/<int:id>',todo_detail),
+    #!CBV
     path('list_class/',Todos.as_view()),
     path('detail_class/<int:id>',TodoDetail.as_view()),
+    #!MVS(ModelViewSet)
     path('',include(router.urls)),
 ]
+
