@@ -37,7 +37,7 @@
             >02_Google-Landing-Page</a
           ></td>
         <td></td>
-        <td></td>
+        <td><!-- Django 2 --></td>
     </tr>
     <tr>
          <td><!-- Satır 3 --></td>
@@ -48,7 +48,7 @@
           >
         </td>
         <td></td>
-        <td></td>
+        <td><!-- Django 3 --></td>
     </tr>
     <tr>
          <td><!-- Satır 4 --></td>
@@ -59,7 +59,7 @@
           >
         </td>
         <td></td>
-        <td></td>
+        <td><!-- Django 4 --></td>
     </tr>
     <tr>
          <td><!-- Satır 4 --></td>
@@ -70,7 +70,7 @@
           >
         </td>
         <td></td>
-        <td></td>
+        <td><!-- Django 5 --></td>
     </tr>
             
 </table>
