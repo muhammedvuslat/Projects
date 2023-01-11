@@ -36,8 +36,8 @@
             href="https://github.com/muhammedvuslat/Projects/tree/master/2_HTML%26CSS%26JS%20Project/02_Google-Landing-Page"
             >02_Google-Landing-Page</a
           ></td>
-        <td></td>
-        <td><!-- Django 2 --></td>
+        <td><!-- Mini Prject 2 --></td>
+        <td><a href="https://github.com/muhammedvuslat/Projects/tree/master/4_Django%20Projects/02_Blog-App">02_Blog-App-Back-End</a></td>
     </tr>
     <tr>
          <td><!-- Satır 3 --></td>
