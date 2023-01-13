@@ -39,16 +39,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #! My app
 
-    #!Third Party
+    #!---Third Party--
     'rest_framework',
-    ##!Swagger
+    #!Swagger
     'drf_yasg',
-    ##!Debug Toolbar
+    #!Debug Toolbar
     # 'debug_toolbar', #! -->  Dev.py 
+    #! Dj Rest Auth
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+
 ]
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
