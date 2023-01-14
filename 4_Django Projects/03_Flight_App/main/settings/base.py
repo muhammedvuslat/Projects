@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #! My app
+    'users',
 
     #!---Third Party--
     'rest_framework',
@@ -48,6 +49,9 @@ INSTALLED_APPS = [
     #! Dj Rest Auth
     'rest_framework.authtoken',
     'dj_rest_auth',
+    #! Token Authentication
+    
+
 
 ]
 
@@ -189,4 +193,10 @@ LOGGING = {
             #  will not be handled by the django logger.
         },
     },
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
 }
