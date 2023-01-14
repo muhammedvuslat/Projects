@@ -1,6 +1,6 @@
 from .base import *
 
-DEGUG = config("DEBUG")
+DEBUG = config("DEBUG")
 THIRD_PARTY_APPS = ["debug_toolbar"]
 INSTALLED_APPS += THIRD_PARTY_APPS
 THIRD_PARTY_MIDDLEWARE = ["debug_toolbar.middleware.DebugToolbarMiddleware"]
