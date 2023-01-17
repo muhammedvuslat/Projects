@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #! My app
     'users',
+    'flight',
 
     #!---Third Party--
     'rest_framework',
