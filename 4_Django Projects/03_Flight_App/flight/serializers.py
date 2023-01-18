@@ -22,10 +22,9 @@ class PassengerSerializer(serializers.ModelSerializer):
 
 class ReservationSerializer(serializers.ModelSerializer):
 
-    Passenger = PassengerSerializer(many=True, required=True)
+    passenger = PassengerSerializer(many=True, required=True)
     flight = serializers.StringRelatedField()
     flight_id = serializers.IntegerField()
-
     user = serializers.StringRelatedField()
 
     class Meta:
@@ -35,5 +34,14 @@ class ReservationSerializer(serializers.ModelSerializer):
             "user",
             "flight",
             "flight_id",
-            "Passenger"
+            "passenger"
         )
+    def create(self, validated_data):
+        passenger_data = validated_data.pop("passenger")
+        validated_data["user_id"] = self.context["request"].user.id
+        reservation = Reservation.objects.create(**validated_data)
+        for passenger in passenger_data:
+            pas = Passenger.objects.create(**passenger)
+            reservation.passenger.add(pas)
+        reservation.save()
+        return reservation
