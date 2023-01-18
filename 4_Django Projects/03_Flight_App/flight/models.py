@@ -25,8 +25,8 @@ class Passenger(models.Model):
 
 class Reservation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    flight = models.ForeignKey(Flight, on_delete=models.CASCADE, related_name='resevation')
-    passenger = models.ManyToManyField(Passenger , related_name='resevations')
+    flight = models.ForeignKey(Flight, on_delete=models.CASCADE, related_name='reservation')
+    passenger = models.ManyToManyField(Passenger , related_name='reservations')
 
     def __str__(self):
         return f"{self.flight.flight_number}/{self.user}"
