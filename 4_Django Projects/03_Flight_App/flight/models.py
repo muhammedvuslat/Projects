@@ -17,6 +17,8 @@ class Passenger(models.Model):
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
     phone_number = models.IntegerField()
+    create_date = models.DateTimeField(auto_now_add=True, null=True) 
+
 
     def __str__(self):
         return f"{self.first_name}{self.last_name}"
@@ -24,7 +26,7 @@ class Passenger(models.Model):
 class Reservation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     flight = models.ForeignKey(Flight, on_delete=models.CASCADE, related_name='resevation')
-    Passenger = models.ManyToManyField(Passenger , related_name='resevations')
+    passenger = models.ManyToManyField(Passenger , related_name='resevations')
 
     def __str__(self):
         return f"{self.flight.flight_number}/{self.user}"

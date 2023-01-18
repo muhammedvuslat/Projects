@@ -4,7 +4,7 @@ from .views import FlightView, ReservationView
 
 router = routers.DefaultRouter()
 router.register("flights", FlightView)
-router.register("reservation", ReservationView)
+router.register("reservations", ReservationView)
 urlpatterns = [
     
 ]
