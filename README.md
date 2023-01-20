@@ -48,7 +48,10 @@
           >
         </td>
         <td></td>
-        <td><!-- Django 3 --></td>
+        <td><a
+            href="https://github.com/muhammedvuslat/Projects/tree/master/4_Django%20Projects/03-00_Flight_App"
+            >03_Flight_App</a
+          ></td>
     </tr>
     <tr>
          <td><!-- Satır 4 --></td>
