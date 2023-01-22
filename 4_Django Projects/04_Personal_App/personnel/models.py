@@ -25,7 +25,7 @@ GENDER = (
 
 class Personnel(models.Model):
 
-    department = models.OneToOneField(
+    department = models.ForeignKey(
         Department, on_delete=models.SET_NULL, related_name="personnels", null=True)
     create_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     first_name = models.CharField(max_length=30)
@@ -36,4 +36,4 @@ class Personnel(models.Model):
     start_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.first_name}{self.title}"
+        return f"{self.first_name} : {self.title}"
