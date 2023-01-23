@@ -62,7 +62,10 @@
           >
         </td>
         <td></td>
-        <td><!-- Django 4 --></td>
+        <td><a
+            href="https://github.com/muhammedvuslat/Projects/tree/master/4_Django%20Projects/04_Personal_App"
+            >04_Personal_App/a
+          ></td>
     </tr>
     <tr>
          <td><!-- Satır 4 --></td>
