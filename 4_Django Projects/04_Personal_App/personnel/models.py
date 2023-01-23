@@ -26,7 +26,7 @@ GENDER = (
 class Personnel(models.Model):
 
     department = models.ForeignKey(
-        Department, on_delete=models.SET_NULL, related_name="personnels", null=True)
+        Department, on_delete=models.SET_NULL, related_name="personals", null=True)
     create_user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
