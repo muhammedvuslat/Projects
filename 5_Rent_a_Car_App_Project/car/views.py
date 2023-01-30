@@ -11,4 +11,12 @@ class CarView(ModelViewSet):
     serializer_class = CarSerializer
     permission_classes = [IsStaffOrReadOnly,]
 
+    def get_queryset(self):
+        if self.request.is_staff:
+            queryset = super().get_queryset()
+        else:
+            queryset = super().get_queryset.filter(availability=True)
+        start_key = self.request.query_params.get('start')
+        end_key = self.request.query_params.get('end')
+        return super().get_queryset()
 
