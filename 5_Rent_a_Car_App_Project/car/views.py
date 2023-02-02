@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from .models import Car, Reservation
 from .serializers import CarSerializer, ReservationSerializer
 from .permissions import IsStaffOrReadOnly
-from django.db.models import Q
+from django.db.models import Q, Exists, OuterRef
 from django.utils import timezone
 
 
@@ -27,12 +27,12 @@ class CarView(ModelViewSet):
 
         if start_key is not None or end_key is not None: 
 
-            not_available = Reservation.objects.filter( 
-                    Q(start_date__lt=end_key) & Q(end_date__gt=start_key)
-            ).values_list('car_id', flat=True) 
-            queryset = queryset.exclude(id__in=not_available) 
-            print(f'Queryset{queryset}')
-            print(f'Not Available{not_available}') 
+            queryset = queryset.annotate(
+                is_available=~Exists(Reservation.objects.filter(
+                    Q(car=OuterRef('pk')) & Q(
+                        start_date__lt=end_key) & Q(end_date__gt=start_key)
+                ))
+            )
         return queryset
 
 class ReservationView(ListCreateAPIView):
