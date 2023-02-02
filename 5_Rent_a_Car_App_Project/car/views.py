@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from rest_framework.viewsets import ModelViewSet
-from .models import Car , Reservation
+from .models import Car, Reservation
 from .serializers import CarSerializer
 from .permissions import IsStaffOrReadOnly
 from django.db.models import Q
@@ -10,13 +10,13 @@ from django.db.models import Q
 class CarView(ModelViewSet):
     queryset = Car.objects.all()
     serializer_class = CarSerializer
-    permission_classes = [IsStaffOrReadOnly,]
+    permission_classes = (IsStaffOrReadOnly,)
 
     def get_queryset(self):
-        if self.request.is_staff:
+        if self.request.user.is_staff:
             queryset = super().get_queryset()
         else:
-            queryset = super().get_queryset.filter(availability=True)
+            queryset = super().get_queryset().filter(availability=True)
         start_key = self.request.query_params.get('start')
         end_key = self.request.query_params.get('end')
         
@@ -29,7 +29,6 @@ class CarView(ModelViewSet):
             queryset = queryset.exclude(id__in=not_available) 
             print(f'Queryset{queryset}')
             print(f'Not Available{not_available}') 
-
-
-
         return queryset
+
+        
