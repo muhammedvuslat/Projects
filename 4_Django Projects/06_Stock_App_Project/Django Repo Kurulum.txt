@@ -1,0 +1,8 @@
+- Proje Kurulum komutları
+    python3 -m venv env
+    source env/bin/activate
+    pip install -r requirements.tx
+- Super User komutu
+    python3 manage.py createsuperuser
+-App kurulumu 
+    python3 manage.py startapp stock
