@@ -1,29 +1,6 @@
 from rest_framework import serializers
 from .models import Brand, Category, Firm, Product, Purchases, Sales
 
-class CategorySerializer(serializers.ModelSerializer):
-    product_count = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Category
-        fields = (
-            'id',
-            'name',
-            'product_count'            
-        )
-
-    def get_product_count(self,obj):
-        return Product.objects.filter(category_id=obj.id).count()
-
-class BrandSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Brand
-        fields = (
-            'id',
-            'name',
-            'image'
-        )
-
 class ProductSerializer(serializers.ModelSerializer):
 
     category = serializers.StringRelatedField()
@@ -41,6 +18,44 @@ class ProductSerializer(serializers.ModelSerializer):
             'brand',
             'brand_id',
             'stock'            
+        )
+
+class CategorySerializer(serializers.ModelSerializer):
+    product_count = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Category
+        fields = (
+            'id',
+            'name',
+            'product_count'            
+        )
+
+    def get_product_count(self,obj):
+        return Product.objects.filter(category_id=obj.id).count()
+
+class CategoryProductSerializer(serializers.ModelSerializer):
+    products_category = ProductSerializer(many=True)
+    product_count = serializers.SerializerMethodField()
+    class Meta:
+        model = Category
+        fields =(
+            'id',
+            'name',
+            'product_count',
+            'products_category'
+        )
+    def get_product_count(self,obj):
+        return Product.objects.filter(category_id=obj.id).count()
+    
+
+class BrandSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields = (
+            'id',
+            'name',
+            'image'
         )
 
 class FirmSerializer(serializers.ModelSerializer):
