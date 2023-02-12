@@ -10,9 +10,13 @@ class CreatedUpdatedClass(models.Model):
         abstract = True
 
 class Category(models.Model):
-    name = models.CharField(max_length=20, default=True)
+    name = models.CharField(max_length=20)
     def __str__(self):
         return f'Category = {self.name}'
+    
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
     
 class Brand(models.Model):
     name = models.CharField(max_length=25, unique=True)
@@ -42,6 +46,7 @@ class Firm(CreatedUpdatedClass):
 
     def __str__(self):
         return f'Firm = {self.name}'
+    
 class Purchases(CreatedUpdatedClass):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     firm = models.ForeignKey(Firm, on_delete=models.SET_NULL, null=True, related_name='firm_purchases')
@@ -57,6 +62,10 @@ class Purchases(CreatedUpdatedClass):
         decimal_places=2,
         blank=True
     )
+
+    class Meta:
+        verbose_name = 'Purchases'
+        verbose_name_plural = 'Purchases'
 
     def __str__(self):
         return f'Purchases({self.product} & {self.quantity})'
@@ -75,6 +84,10 @@ class Sales(CreatedUpdatedClass):
         decimal_places=2,
         blank=True
     )
+
+    class Meta:
+        verbose_name = 'Sales'
+        verbose_name_plural = 'Sales'
 
     def __str__(self):
         return f'Sales({self.product} & {self.quantity})'
