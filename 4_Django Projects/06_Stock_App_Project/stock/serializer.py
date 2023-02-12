@@ -48,7 +48,6 @@ class CategoryProductSerializer(serializers.ModelSerializer):
     def get_product_count(self,obj):
         return Product.objects.filter(category_id=obj.id).count()
     
-
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand

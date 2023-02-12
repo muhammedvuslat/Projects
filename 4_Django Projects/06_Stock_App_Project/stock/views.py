@@ -18,23 +18,41 @@ class CategoryView(viewsets.ModelViewSet):
             return CategoryProductSerializer
         return super().get_serializer_class()
 
-
 class BrandView(viewsets.ModelViewSet):
     queryset = Brand.objects.all()
     serializer_class = BrandSerializer
+    permission_classes = [DjangoModelPermissions]
+    filter_backends = [filters.SearchFilter,DjangoFilterBackend]
+    search_fields = ['name']
+    filterset_fields = ['name']
 
 class ProductView(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    permission_classes = [DjangoModelPermissions]
+    filter_backends = [filters.SearchFilter,DjangoFilterBackend]
+    search_fields = ['name','category']
+    filterset_fields = ['brand','category']
 
 class FirmView(viewsets.ModelViewSet):
     queryset = Firm.objects.all()
     serializer_class = FirmSerializer
+    permission_classes = [DjangoModelPermissions]
+    filter_backends = [filters.SearchFilter,DjangoFilterBackend]
+    search_fields = ['name']
+    filterset_fields = ['name']
 
 class PurchasesView(viewsets.ModelViewSet):
     queryset = Purchases.objects.all()
     serializer_class = PurchasesSerializer
+    permission_classes = [DjangoModelPermissions]
+    filter_backends = [filters.SearchFilter,DjangoFilterBackend]
+    search_fields = ['firm','product']
+    filterset_fields = ['firm','product']
 
 class SalesView(viewsets.ModelViewSet):
     queryset = Sales.objects.all()
     serializer_class = SalesSerializer
+    filter_backends = [filters.SearchFilter,DjangoFilterBackend]
+    search_fields = ['product']
+    filterset_fields = ['product']
