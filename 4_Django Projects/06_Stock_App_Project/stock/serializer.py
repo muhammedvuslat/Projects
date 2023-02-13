@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Brand, Category, Firm, Product, Purchases, Sales
+import datetime
 
 class ProductSerializer(serializers.ModelSerializer):
 
@@ -76,6 +77,10 @@ class PurchasesSerializer(serializers.ModelSerializer):
     firm_id = serializers.IntegerField()
     brand_id = serializers.IntegerField()
     product_id = serializers.IntegerField()
+    category = serializers.SerializerMethodField()
+    time_hour = serializers.SerializerMethodField()
+    created = serializers.SerializerMethodField()
+
 
     class Meta:
         model = Purchases
@@ -83,6 +88,7 @@ class PurchasesSerializer(serializers.ModelSerializer):
             'id',
             'user',
             'user_id',
+            'category',
             'firm',
             'firm_id',
             'brand',
@@ -92,9 +98,19 @@ class PurchasesSerializer(serializers.ModelSerializer):
             'quantity',
             'price',
             'price_total',
-            'created',
-            'updated'
+            'time_hour',
+            'created'
         )
+    def get_category(self, obj):
+        return obj.product.category.name
+
+    def get_time_hour(self, obj):
+        return datetime.datetime.strftime(obj.created, "%H:%M")
+
+    def get_created(self, obj):
+        return datetime.datetime.strftime(obj.created, "%d,%m,%Y") 
+    
+
 
 class SalesSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField()
@@ -103,6 +119,8 @@ class SalesSerializer(serializers.ModelSerializer):
     user_id = serializers.IntegerField()
     brand_id = serializers.IntegerField()
     product_id = serializers.IntegerField()
+    time_hour = serializers.SerializerMethodField()
+    created = serializers.SerializerMethodField()
 
     class Meta:
         model = Purchases
@@ -116,8 +134,17 @@ class SalesSerializer(serializers.ModelSerializer):
             'product_id', 
             'quantity',
             'price',
-            'price_total'
+            'price_total',
+            'time_hour',
+            'created'
+
         )
+    
+    def get_time_hour(self, obj):
+        return datetime.datetime.strftime(obj.created, "%H:%M")
+
+    def get_created(self, obj):
+        return datetime.datetime.strftime(obj.created, "%d,%m,%Y") 
 
 
     
