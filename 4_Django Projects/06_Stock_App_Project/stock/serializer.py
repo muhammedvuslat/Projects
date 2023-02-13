@@ -73,7 +73,6 @@ class PurchasesSerializer(serializers.ModelSerializer):
     firm = serializers.StringRelatedField()
     brand = serializers.StringRelatedField()
     product = serializers.StringRelatedField()
-    user_id = serializers.IntegerField()
     firm_id = serializers.IntegerField()
     brand_id = serializers.IntegerField()
     product_id = serializers.IntegerField()
@@ -92,7 +91,9 @@ class PurchasesSerializer(serializers.ModelSerializer):
             'product_id', 
             'quantity',
             'price',
-            'price_total'
+            'price_total',
+            'created',
+            'updated'
         )
 
 class SalesSerializer(serializers.ModelSerializer):
