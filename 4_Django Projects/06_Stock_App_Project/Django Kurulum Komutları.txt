@@ -6,6 +6,3 @@
     python3 manage.py createsuperuser
 -App kurulumu 
     python3 manage.py startapp stock
-- İlgili models yapısı oluşturulur ve migrate işlemleri gerçekleştirir
-    python3 manage.py makemigrations(ilk models oluşturma işleminde gerekli değildir)
-    python3 manage.py migrate
