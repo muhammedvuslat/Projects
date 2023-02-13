@@ -78,5 +78,25 @@
         <td></td>
         <td><!-- Django 5 --></td>
     </tr>
+    <tr>
+         <td><!-- Satır 4 --></td>
+        <td></td>
+        <td></td>
+        <td>
+            <a
+            href="https://github.com/muhammedvuslat/Projects/tree/master/4_Django%20Projects/05_Rent_a_Car_App_Project"
+            >05_Rent_a_Car_App_Project</a
+          ></td>
+    </tr>
+    <tr>
+         <td><!-- Satır 4 --></td>
+        <td></td>
+        <td></td>
+        <td>
+            <a
+            href="https://github.com/muhammedvuslat/Projects/tree/master/4_Django%20Projects/06_Stock_App_Project"
+            >06_Stock_App_Project</a
+          ></td>
+    </tr>
             
 </table>
