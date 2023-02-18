@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block container %}
+<h1>ToDo List Add</h1>
+<form action="" method="POST">
+  {% csrf_token %}
+  <table>
+    {{form}}
+    <!-- Form da bulunan def todo_add metodundaki context formu -->
+  </table>
+  <input type="submit" value="Add Todo" class="btn btn-outline-success" />
+</form>
+{% endblock container %}
