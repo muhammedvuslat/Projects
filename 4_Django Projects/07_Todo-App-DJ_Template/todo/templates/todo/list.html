@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+<h1>ToDo List</h1>
+
+{% block container %}
+<a href="/add" class="btn btn-outline-success">Add To Do</a>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <td>Title</td>
+      <td>Description</td>
+      <td>Priority</td>
+      <td>Status</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for todo in todos %}
+    <tr>
+      <td>{{ todo.title }}</td>
+      <td>{{ todo.description }}</td>
+      <td>
+        {% if todo.priority == 1 %}
+        <b class="text-danger"> {{ todo.get_priority_display }}</b>
+        {% elif todo.priority == 2 %}
+        <b class="text-warning"> {{ todo.get_priority_display }}</b>
+        {% else %}
+        <b class="text-info"> {{ todo.get_priority_display }}</b>
+        {% endif %}
+      </td>
+      <td>
+        {% if todo.status == 'c' %}
+        <b class="text-success"> {{ todo.get_status_display }}</b>
+        {% elif todo.status == 'w' %}
+        <b class="text-danger"> {{ todo.get_status_display }}</b>
+        {% else %}
+        <b class="text-warning"> {{ todo.get_status_display }}</b>
+        {% endif %}
+      </td>
+      <td>
+        <a href="/update/{{ todo.id }}" class="btn btn-outline-warning"
+          >Update</a
+        >
+        <a
+          href="/delete/{{ todo.id }}"
+          onclick="return confirm('Are you sure?')"
+          class="btn btn-outline-danger"
+          >Delete</a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock container %}
