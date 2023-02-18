@@ -97,8 +97,8 @@
         <td><!-- HTML&CSS&JS Project --></td>
         <td><!-- Mini Project --></td>
         <td><a
-            href="https://github.com/muhammedvuslat/Projects/tree/master/4_Django%20Projects/07_Todo-App-DJ_Template"
-            >07_Todo-App-DJ_Template</a
+            href="https://github.com/muhammedvuslat/Projects/tree/master/4_Django%20Projects/07_Todo_App_DJ_Template"
+            >07_Todo_App_DJ_Template</a
           ></td>        
     </tr>
             
