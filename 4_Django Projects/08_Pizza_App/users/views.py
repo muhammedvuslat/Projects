@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UserForm, LoginForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
+from django.contrib import messages
 
 def register(request):
     form =UserForm()
@@ -9,7 +10,8 @@ def register(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            login(request, user)
             return redirect('home')
         
     context = {
@@ -26,6 +28,7 @@ def user_login(request):
         if form.is_valid():
             user = form.get_user()
             login(request,user)
+            messages.success(request,'You are now logged in')
             return redirect('home')
 
     context = {
@@ -33,3 +36,8 @@ def user_login(request):
     }
 
     return render(request,'users/login.html',context)
+
+def user_logout(request):
+    logout(request)
+    messages.warning(request, 'Logout successfuly')
+    return redirect('home')
