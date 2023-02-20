@@ -4,11 +4,15 @@
         <a class="navbar-brand alert-warning" href="/">
         <img src="{% static 'images/nav-logo.png' %}" alt="Hi!" width="80" height="80">
         Pizzeria Napoletana</a>
+        {% if user.is_authenticated %}
+            <h5> Welcome {{ request.user.username }}</h5>                
+        {% endif %}
 
         <div class="collapse navbar-collapse" id="navbars-host">
             <ul class="navbar-nav ms-auto">         
                 <li class="nav-item"><a class="nav-link" href="#">Pizzas</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'user_login' %}">Login</a></li>
             </ul>
         </div>
 </nav>
