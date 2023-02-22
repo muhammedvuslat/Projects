@@ -27,7 +27,7 @@ class Order(models.Model):
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     size = models.CharField(choices=Size, default='m',max_length=1)
-    quantiy = models.IntegerField(default=1)
+    quantity = models.IntegerField(default=1)
 
     def __str__(self):
         return f'{self.pizza.name} order {self.user.username}'

@@ -18,6 +18,13 @@
                         <li><strong>{{pizza.price}}</strong></li>
                        </ul>
                     </p>
+                    
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'order' pizza.id %}">
+                            <button class="btn btn-success"> Order</button>
+                        </a>
+                    {% endif %}
+                        
                     </div>
                 </div>
                 </div>
