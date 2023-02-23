@@ -1,6 +1,5 @@
 {% extends 'pizzas/base.html' %}
 
-
 {% block content %}
 <div class="col-lg-3 mx-auto d-flex justify-content-center align-items-center mt-5">
 
@@ -11,7 +10,7 @@
           <p class="card-text">
             <ul>
                 <li>
-                    {{pizza.topping.all |join:", "}}
+                    {{pizza.toppings.all |join:", "}}
                 </li>
                 <li>
                   <strong> {{pizza.price}} $</strong> 
@@ -22,12 +21,13 @@
             <form action="" method="POST">
                 {% csrf_token %}
                 {{form}}
-                <input  class="btn btn-success mt-1" type="submit" value="Order">
+                <br>
+                <input  class="btn btn-success" type="submit" value="Update Order">
             </form>
          </div>
         </div>
       </div>
 
-    </div>    
+    </div>
 {% endblock content %}
     
