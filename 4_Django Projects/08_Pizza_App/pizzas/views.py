@@ -38,3 +38,19 @@ def my_orders(request):
         'orders' : orders,
      }
      return render(request,'pizzas/my_orders.html',context)
+
+def order_update(request,id):
+    order = Order.objects.get(id=id)
+    pizza = Pizza.objects.get(id = order.pizza.id)
+    form = PizzaForm(instance=order)
+    if request.method == 'POST':
+        form = PizzaForm(request.POST, instance=order)
+        if form.is_valid():
+            order.save()
+            return redirect('my_orders')
+    context = {
+        'order': order,
+        'pizza': pizza,
+        'form': form,
+    }
+    return render(request,'pizzas/order_update.html',context)
