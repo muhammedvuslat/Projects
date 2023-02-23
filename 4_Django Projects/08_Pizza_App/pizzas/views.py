@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import Pizza
+from django.shortcuts import render, redirect
+from .models import Pizza,Order
 from .forms import PizzaForm
 
 def home(request):
@@ -17,6 +17,13 @@ def pizzas(request):
 def order_view(request,id):
     pizza = Pizza.objects.get(id=id)
     form = PizzaForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.pizza = pizza
+            order.user = request.user
+            order.save()
+            return redirect('my_orders')
 
     context = {
         'pizza' : pizza,
@@ -24,3 +31,10 @@ def order_view(request,id):
     }
 
     return render(request,'pizzas/order.html', context)
+
+def my_orders(request):
+     orders = Order.objects.filter(user = request.user)
+     context = {
+        'orders' : orders,
+     }
+     return render(request,'pizzas/my_orders.html',context)
