@@ -11,5 +11,5 @@ class PizzaForm(forms.ModelForm):
         )
         widgets = {
             'size':forms.RadioSelect,
-            'quantity': forms.TextInput(attrs={'class' : "rounded border border-warning form-control", "style" : "width: 50%;"}),          
+            'quantity': forms.TextInput(attrs={'class' : "rounded border border-success form-control", "style" : "width: 50%;"}),          
         }
