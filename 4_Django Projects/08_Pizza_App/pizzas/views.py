@@ -54,3 +54,8 @@ def order_update(request,id):
         'form': form,
     }
     return render(request,'pizzas/order_update.html',context)
+
+def order_delete(request, id):
+    order = Order.objects.get(id=id)
+    order.delete()
+    return redirect('my_orders')
