@@ -1,3 +1,5 @@
+<h3>TR</h3>
+<hr/>
 <h1>Pizza App</h1>
 Bu proje, Django frameworkü kullanılarak geliştirilmiş bir giriş seviye projesidir.
 
@@ -14,6 +16,25 @@ Proje, bir pizza sipariş sistemi olarak tasarlanmıştır. Kullanıcı oluştur
 
 <h3>Geliştirici</h3>
 Proje, <a href="https://github.com/muhammedvuslat">M.Vuslat ÇEVİK</a> tarafından geliştirilmiştir.
+
+<h3>Eng</h3>
+<hr/>
+<h1>Pizza App</h1>
+This project is an introductory project developed using the Django framework.
+
+<h3>Installation</h3>
+After downloading the project to your computer, you can go to the project folder in the terminal and run the following commands:
+
+<h5>Commands</h5>
+pip install -r requirements.txt <br>
+python manage.py migrate <br>
+python manage.py runserver
+
+<h3>Use</h3>
+The project is designed as a pizza ordering system. They can create users, provide login and logout operations, view pizzas, create new orders, update or delete existing orders.
+
+<h3>Developer</h3>
+The project was developed by <a href="https://github.com/muhammedvuslat">M.Vuslat ÇEVİK</a>.
 
 İmg1
 <img width="1667" alt="3" src="https://user-images.githubusercontent.com/105074236/220878281-53fb304c-f353-4890-b407-f945b12d9697.png">
