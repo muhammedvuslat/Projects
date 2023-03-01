@@ -4,11 +4,11 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { Link } from "react-router-dom";
+import Logo from "../assets/Logos.jpg";
 const styles = {
   appBar: {
     backgroundColor: "#046582",
@@ -17,6 +17,7 @@ const styles = {
     flexGrow: 1,
   },
   title: {
+    flexGrow: 1,
     display: { xs: "none", sm: "block" },
     fontFamily: "Girassol",
     "& span": {
@@ -29,6 +30,9 @@ const styles = {
     fontSize: 20,
     color: "white",
     textDecoration: "none",
+  },
+  blogLogo: {
+    width: 40,
   },
 };
 
@@ -54,11 +58,11 @@ export default function Navbar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <img src={Logo} alt="logo" style={styles.blogLogo} />
           </IconButton>
 
           <Typography sx={styles.title} variant="h6" noWrap>
-            ──── <span>{"BlogLand"}</span>
+            ──── <span>{"BlogLand"}</span> ────
           </Typography>
           <div>
             <IconButton
