@@ -5,7 +5,7 @@ const AuthContext = createContext();
 
 //! AurhContext den veri almak için function oluşturma
 
-function useAuth() {
+export function useAuth() {
   return useContext(AuthContext);
 }
 
