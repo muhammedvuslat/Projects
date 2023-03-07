@@ -1,8 +1,3 @@
-<h1>Projects</h1>
-<hr />
-<h3>In this repo, my projects that I have done since the beginning of the education process are with you.</h2>
-<h4>You can access the relevant directory by clicking on the links.</h4>
-
 <table>
     <tr>
         <th>React Project</th>
@@ -36,7 +31,10 @@
             href="https://github.com/muhammedvuslat/Projects/tree/master/2_HTML%26CSS%26JS%20Project/02_Google-Landing-Page"
             >02_Google-Landing-Page</a
           ></td>
-        <td><!-- Mini Prject 2 --></td>
+        <td><a
+            href="https://github.com/muhammedvuslat/Projects/tree/master/3_Mini%20Projects/02_React_Temperature_Project/temperature_control"
+            >02_React_Temperature_Project</a
+          ></td>
         <td><a href="https://github.com/muhammedvuslat/Projects/tree/master/4_Django%20Projects/02_Blog-App">02_Blog-App-Back-End</a></td>
     </tr>
     <tr>
@@ -47,7 +45,10 @@
             >03_Porfolio_Sass-Project</a
           >
         </td>
-        <td></td>
+        <td><a
+            href="https://github.com/muhammedvuslat/Projects/tree/master/3_Mini%20Projects/03_React_Quiz_App/react_quiz_app"
+            >03_React_Quiz_App</a
+          ></td>
         <td><a
             href="https://github.com/muhammedvuslat/Projects/tree/master/4_Django%20Projects/03-00_Flight_App"
             >03_Flight_App</a
@@ -99,6 +100,15 @@
         <td><a
             href="https://github.com/muhammedvuslat/Projects/tree/master/4_Django%20Projects/07_Todo_App_DJ_Template"
             >07_Todo_App_DJ_Template</a
+          ></td>        
+    </tr>
+    <tr>
+        <td><!-- React Project --></td>
+        <td><!-- HTML&CSS&JS Project --></td>
+        <td><!-- Mini Project --></td>
+        <td><a
+            href="https://github.com/muhammedvuslat/Projects/tree/master/4_Django%20Projects/08_Pizza_App"
+            >08_Pizza_App</a
           ></td>        
     </tr>
             
