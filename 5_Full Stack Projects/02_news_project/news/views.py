@@ -6,7 +6,7 @@ from news.models import News
 def scape(request):
     session = request.Sessions()
     session.headers = {"User-Agent": "Googlebot/2.1 (+http://www.google.com/bot.html)"}
-    url = "http://www.analizgames.com/"
+    url = "https://www.analizgames.com/news1/"
 
     content = session.get(url, verify=False).content
     soup = BSoup(content, "html.parser")
@@ -22,3 +22,10 @@ def scape(request):
         new_headline.image = image_src
         new_headline.save()
     return redirect("../")
+
+def news_list(request):
+    headlines = News.objects.all()[::-1]
+    context = {
+        'object_list': headlines,
+    }
+    return render(request, "news/home.html", context)
