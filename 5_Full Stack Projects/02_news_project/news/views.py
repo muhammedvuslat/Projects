@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup as BSoup
 from news.models import News
 
-def scape(request):
+def scrape(request):
     session = request.Sessions()
     session.headers = {"User-Agent": "Googlebot/2.1 (+http://www.google.com/bot.html)"}
     url = "https://www.analizgames.com/news1/"
