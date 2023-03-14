@@ -4,7 +4,7 @@ import Image from "react-bootstrap/Image";
 
 const Language = ({ img, name, options }) => {
   const [showImage, setShowImage] = useState(true);
-  console.log(showImage);
+  // console.log(showImage);
   return (
     <Container
       style={{ background: "peachpuff" }}
