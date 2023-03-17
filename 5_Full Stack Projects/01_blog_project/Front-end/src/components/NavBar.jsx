@@ -2,153 +2,124 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
-import RateReviewTwoToneIcon from "@mui/icons-material/RateReviewTwoTone";
+import Menu from "@mui/material/Menu";
 import { useNavigate } from "react-router";
-import useAuthCalls from "../hooks/useAuthCalls";
+import { Link } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthProvider";
-import defaultAvatar from "../assets/blank-profile-picture-973460_1280.png";
+import useAuthCalls from "../hooks/useAuthCalls";
 
-const settings = ["Profile", "Dashboard", "Register"];
-
-function NavBar() {
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const navigate = useNavigate();
+export default function NavBar() {
   const { currentUser } = useAuthContext();
-
   const { logout } = useAuthCalls();
+  const auth = true;
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const navigate = useNavigate();
 
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar
-          disableGutters
-          sx={{ display: "flex", justifyContent: "space-between" }}
-        >
-          <RateReviewTwoToneIcon
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-          />
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="fixed">
+        <Toolbar>
           <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            BLOG APP
-          </Typography>
-
-          <RateReviewTwoToneIcon
-            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-          />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
             onClick={() => navigate("/")}
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, cursor: "pointer" }}
           >
-            BLOG APP
+            {"<HMZAYGN/>"}
           </Typography>
-
-          <Box>
-            <Tooltip title="Open settings">
-              {currentUser?.avatar ? (
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="avatar" src={currentUser.avatar} />
-                </IconButton>
-              ) : (
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="avatar" src={defaultAvatar} />
-                </IconButton>
-              )}
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography
-                  textAlign="center"
-                  onClick={() => navigate("/profile")}
-                >
-                  Profile
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center" onClick={() => navigate("/")}>
-                  Dashboard
-                </Typography>
-              </MenuItem>
-              {/* <MenuItem onClick={handleCloseUserMenu}>
-                <Typography
-                  textAlign="center"
-                  onClick={() => navigate("/register")}
-                >
-                  Register
-                </Typography>
-              </MenuItem> */}
-
-              <MenuItem>
-                {currentUser ? (
-                  <Typography onClick={() => logout(currentUser)}>
-                    LogOut
-                  </Typography>
+          {auth && (
+            <div>
+              <IconButton
+                size="small"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                {currentUser?.displayName}
+                {currentUser?.photoURL ? (
+                  <img
+                    style={{
+                      marginLeft: "1rem",
+                      width: "30px",
+                      height: "30px",
+                      borderRadius: "50%",
+                    }}
+                    src={currentUser?.photoURL}
+                    alt="avatar"
+                  />
                 ) : (
-                  <Typography onClick={() => navigate("/login")}>
-                    LogIn
-                  </Typography>
+                  <AccountCircle sx={{ marginLeft: ".5rem" }} />
                 )}
-              </MenuItem>
-            </Menu>
-          </Box>
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>
+                  {currentUser?.email ? (
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to="/login"
+                      onClick={logout}
+                    >
+                      Logout
+                    </Link>
+                  ) : (
+                    <Link style={{ textDecoration: "none" }} to="/login">
+                      Login
+                    </Link>
+                  )}
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Link style={{ textDecoration: "none" }} to="/register">
+                    Register
+                  </Link>
+                </MenuItem>
+                {currentUser?.email && (
+                  <MenuItem onClick={handleClose}>
+                    <Link style={{ textDecoration: "none" }} to="/newblog">
+                      New Blog
+                    </Link>
+                  </MenuItem>
+                )}
+                {currentUser?.email && (
+                  <MenuItem onClick={handleClose}>
+                    <Link style={{ textDecoration: "none" }} to="/profile">
+                      Profile
+                    </Link>
+                  </MenuItem>
+                )}
+              </Menu>
+            </div>
+          )}
         </Toolbar>
-      </Container>
-    </AppBar>
+      </AppBar>
+      <Toolbar></Toolbar>
+    </Box>
   );
 }
-export default NavBar;

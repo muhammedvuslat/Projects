@@ -1,123 +1,62 @@
-import axios from "axios";
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
 import { useNavigate } from "react-router";
-import { useAuthContext } from "../contexts/AuthProvider";
+import { auth } from "../helpers/firebase";
+import { toastError, toastSuccess } from "../helpers/toastify";
 
 const useAuthCalls = () => {
-  const BASE_URL = "http://127.0.0.1:8000/";
   const navigate = useNavigate();
-  const { setCurrentUser, currentUser } = useAuthContext();
 
-  const getProfile = async (id, token) => {
-    const { data } = await axios.get(`${BASE_URL}users/profile/${id}/`, {
-      headers: { Authorization: `Token ${token}` },
-    });
-
-    return data;
-  };
-
-  const register = async (registerData) => {
+  const register = async (email, password, name, lastName) => {
+    const displayName = name + " " + lastName;
     try {
-      const { data } = await axios.post(
-        `${BASE_URL}users/register/`,
-        registerData
-      );
-      const profileData = await getProfile(data.id, data.key);
-      setCurrentUser({
-        ...data,
-        display_name: profileData.display_name,
-        avatar: profileData.avatar,
-        bio: profileData.bio,
-      });
-      localStorage.setItem(
-        "USER",
-        JSON.stringify({
-          ...data,
-          display_name: profileData.display_name,
-          avatar: profileData.avatar,
-          bio: profileData.bio,
-        })
-      );
+      await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(auth.currentUser, { displayName: displayName });
       navigate("/");
+      toastSuccess(`Successfully Registered`);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      toastError("Can not be Registered");
     }
   };
 
-  const login = async (loginData) => {
+  const login = async (email, password) => {
     try {
-      const { data } = await axios.post(
-        `${BASE_URL}users/auth/login/`,
-        loginData
-      );
-      const profileData = await getProfile(data.user.id, data.key);
-      setCurrentUser({
-        ...data.user,
-        key: data.key,
-        display_name: profileData.display_name,
-        avatar: profileData.avatar,
-        bio: profileData.bio,
-      });
-      localStorage.setItem(
-        "USER",
-        JSON.stringify({
-          ...data.user,
-          key: data.key,
-          display_name: profileData.display_name,
-          avatar: profileData.avatar,
-          bio: profileData.bio,
-        })
-      );
+      await signInWithEmailAndPassword(auth, email, password);
       navigate("/");
+      toastSuccess(`Successfully Logged In`);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      toastError("Can not be Logged In");
     }
   };
 
-  const updateProfile = async (updatedUser) => {
-    try {
-      const { data } = await axios.put(
-        `${BASE_URL}users/profile/${updatedUser.user_id}/`,
-        updatedUser,
-        {
-          headers: { Authorization: `Token ${currentUser.key}` },
-        }
-      );
-
-      setCurrentUser({
-        ...currentUser,
-        display_name: data.display_name,
-        avatar: data.avatar,
-        bio: data.bio,
+  const googleAuth = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        navigate("/");
+        toastSuccess(`Successfully Signed In`);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toastError("Can not be Signed In");
       });
-
-      localStorage.setItem(
-        "USER",
-        JSON.stringify({
-          ...currentUser,
-          display_name: data.display_name,
-          avatar: data.avatar,
-          bio: data.bio,
-        })
-      );
-    } catch (error) {
-      console.log(error);
-    }
   };
 
-  const logout = async (data) => {
-    try {
-      await axios.post(`${BASE_URL}users/auth/logout/`, null, {
-        headers: { Authorization: `Token ${data.key}` },
-      });
-
-      localStorage.removeItem("USER");
-      navigate("/login");
-    } catch (error) {
-      console.log(error);
-    }
+  const logout = () => {
+    signOut(auth);
+    navigate("/login");
+    toastSuccess(`Successfully Logged Out`);
   };
 
-  return { register, login, updateProfile, logout };
+  return { login, register, logout, googleAuth };
 };
 
 export default useAuthCalls;
