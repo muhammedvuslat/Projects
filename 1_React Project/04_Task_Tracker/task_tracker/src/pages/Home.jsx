@@ -18,7 +18,7 @@ const Home = () => {
 
   return (
     <div className="mt-4 d-flex justify-content-center flex-column">
-      <AddTask />
+      <AddTask getTask={getTask} />
       <ListTask task={task} getTask={getTask} />
     </div>
   );
