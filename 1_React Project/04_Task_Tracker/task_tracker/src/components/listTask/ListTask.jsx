@@ -1,6 +1,16 @@
+import axios from "axios";
 import { AiOutlineDelete } from "react-icons/ai";
-const ListTask = ({ task }) => {
-  console.log(task);
+const ListTask = ({ task, getTask }) => {
+  const url = "https://641df6700596099ce1586964.mockapi.io/task_tracker";
+
+  const deleteTask = async (id) => {
+    try {
+      await axios.delete(`${url}/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+    getTask();
+  };
   return (
     <div>
       {task.map((taskMap) => {
@@ -30,6 +40,7 @@ const ListTask = ({ task }) => {
                   fontSize: "1.5rem",
                   boxShadow: "2px 2px 2px #ECAB9E",
                 }}
+                onClick={() => deleteTask(id)}
               />
             </div>
           </div>
