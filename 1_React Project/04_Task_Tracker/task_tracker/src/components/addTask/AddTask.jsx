@@ -33,13 +33,18 @@ const AddTask = ({ getTask }) => {
           <Form.Control
             type="text"
             placeholder="Enter Task"
+            value={task}
             onChange={(e) => setTask(e.target.value)}
           />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Date</Form.Label>
-          <Form.Control type="date" onChange={(e) => setDate(e.target.value)} />
+          <Form.Control
+            type="date"
+            onChange={(e) => setDate(e.target.value)}
+            value={date}
+          />
         </Form.Group>
         <div className="text-center">
           <Button variant="outline-success w-50" type="submit">
