@@ -1,18 +1,32 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
+import useAuthCalls from "../hooks/useAuthCalls";
 
 function Register() {
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const { register } = useAuthCalls();
+  const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState({
+    username: "",
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserInfo({ ...userInfo, [name]: value });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Kayıt işlemi tamamlandı!");
+    register(userInfo);
   };
 
   return (
     <div className="flex h-screen flex-col lg:flex-row">
-      <form className="flex-2 mt-28 shrink lg:px-3">
+      <form className="flex-2 mt-28 shrink lg:px-3" onSubmit={handleSubmit}>
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <label
@@ -24,6 +38,9 @@ function Register() {
             <input
               type="text"
               id="first_name"
+              name="first_name"
+              value={userInfo?.first_name || ""}
+              onChange={handleChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
@@ -39,11 +56,32 @@ function Register() {
             <input
               type="text"
               id="last_name"
+              name="last_name"
+              value={userInfo.last_name || ""}
+              onChange={handleChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Doe"
               required
             />
           </div>
+        </div>
+        <div className="mb-6">
+          <label
+            htmlFor="username"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            User Name
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={userInfo?.username || ""}
+            onChange={handleChange}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="John Doe"
+            required
+          />
         </div>
         <div className="mb-6">
           <label
@@ -55,6 +93,9 @@ function Register() {
           <input
             type="email"
             id="email"
+            name="email"
+            value={userInfo.email || ""}
+            onChange={handleChange}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="john.doe@company.com"
             required
@@ -70,6 +111,9 @@ function Register() {
           <input
             type="password"
             id="password"
+            name="password"
+            value={userInfo.password || ""}
+            onChange={handleChange}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="•••••••••"
             required
@@ -85,10 +129,19 @@ function Register() {
           <input
             type="password"
             id="confirm_password"
+            name="password2"
+            value={userInfo.password2 || ""}
+            onChange={handleChange}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="•••••••••"
             required
           />
+        </div>
+
+        <div className="mb-4">
+          <p onClick={() => navigate("/login")} className="cursor-pointer">
+            Do you have an account? Login Here!
+          </p>
         </div>
 
         <button

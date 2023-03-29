@@ -2,6 +2,8 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import navbarImage from "../assets/navbarImage.png";
+import { useSelector } from "react-redux";
+import useAuthCalls from "../hooks/useAuthCalls";
 
 const navigation = [
   { name: "Home", href: "#", current: true },
@@ -13,6 +15,9 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
+  const { currentUser } = useSelector((state) => state.auth);
+  const { logout } = useAuthCalls();
+
   return (
     <Disclosure as="nav" className="bg-gray-800 fixed w-full">
       {({ open }) => (
@@ -41,25 +46,6 @@ export default function NavBar() {
                     src={navbarImage}
                     alt="Your Company"
                   />
-                </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
-                    {/* {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "rounded-md px-3 py-2 text-sm font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    ))} */}
-                  </div>
                 </div>
 
                 <form className="flex-2 mx-auto">
@@ -91,7 +77,7 @@ export default function NavBar() {
                       type="search"
                       id="default-search"
                       className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Search Mockups, Logos..."
+                      placeholder="Search"
                       required
                     />
                     <button
@@ -108,7 +94,7 @@ export default function NavBar() {
                   type="button"
                   className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
-                  <i class="fa-solid fa-cart-shopping"></i>
+                  <i className="fa-solid fa-cart-shopping"></i>
                 </button>
 
                 {/* Profile dropdown */}
@@ -159,19 +145,35 @@ export default function NavBar() {
                           </a>
                         )}
                       </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item>
+                      {currentUser ? (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <p
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                              onClick={() => logout()}
+                            >
+                              Logout
+                            </p>
+                          )}
+                        </Menu.Item>
+                      ) : (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="/login"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Login
+                            </a>
+                          )}
+                        </Menu.Item>
+                      )}
                     </Menu.Items>
                   </Transition>
                 </Menu>
