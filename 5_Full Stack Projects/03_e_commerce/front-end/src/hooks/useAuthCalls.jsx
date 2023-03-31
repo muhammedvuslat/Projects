@@ -6,6 +6,7 @@ import {
   loginSuccess,
   logoutSuccess,
   registerSuccess,
+  getProfileSuccess,
 } from "../features/authSlice";
 import useAxios, { axiosPublic } from "./useAxios";
 
@@ -50,7 +51,18 @@ const useAuthCalls = () => {
     }
   };
 
-  return { register, login, logout };
+  const getProfile = async (id) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken.get(`/users/profile/${id}/`);
+      dispatch(getProfileSuccess(data));
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+    }
+  };
+
+  return { register, login, logout, getProfile };
 };
 
 export default useAuthCalls;

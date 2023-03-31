@@ -4,6 +4,8 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import NavBar from "../components/NavBar";
+import PrivateRouter from "./PrivateRouter";
+import Profile from "../pages/Profile";
 
 const Approuter = () => {
   return (
@@ -13,6 +15,9 @@ const Approuter = () => {
         <Route index element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<PrivateRouter />}>
+          <Route path="" element={<Profile />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
