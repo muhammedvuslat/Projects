@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import useAuthCalls from "../hooks/useAuthCalls";
 
 const Dashboard = () => {
-  const { currentUser, currentUserId } = useSelector((state) => state.auth);
+  const { currentUser } = useSelector((state) => state.auth);
   const { getProfile } = useAuthCalls();
 
   useEffect(() => {
-    currentUser && getProfile(currentUserId);
+    currentUser && getProfile(currentUser?.id);
   }, []);
 
   return <div>Dashboard</div>;
