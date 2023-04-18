@@ -38,10 +38,10 @@ const authSlice = createSlice({
       state.token = payload?.key;
       state.error = false;
     },
-    getProfileSuccess: (state, { payload }) => {
+    profileSuccess: (state, { payload }) => {
       state.loading = false;
       state.avatar = payload.avatar;
-      state.purse = payload.case;
+      state.purse = payload.purse;
       state.error = false;
     },
     fetchFail: (state) => {
@@ -57,6 +57,6 @@ export const {
   logoutSuccess,
   registerSuccess,
   fetchFail,
-  getProfileSuccess,
+  profileSuccess,
 } = authSlice.actions;
 export default authSlice.reducer;
