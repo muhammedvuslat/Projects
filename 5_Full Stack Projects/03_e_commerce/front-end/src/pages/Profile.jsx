@@ -1,33 +1,121 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ProfileUpdateModal from "../components/ProfileUpdateModal";
+import defaultAvatar from "../assets/defaultAvatar.png";
+import useAuthCalls from "../hooks/useAuthCalls";
 
 const Profile = () => {
-  const { currentUser, avatar, purse } = useSelector((state) => state.auth);
+  const { getAddress, updateAddress } = useAuthCalls();
+  const { currentUser, avatar, purse, address } = useSelector(
+    (state) => state.auth
+  );
   const [showModal, setShowModal] = useState(false);
+  const [toggleAddress, setToggleAddress] = useState(false);
+  const [addressInfo, setAddressInfo] = useState(address || "");
+
+  useEffect(() => {
+    currentUser.id && getAddress();
+  }, []);
+
+  const handleEdit = (e) => {
+    e.preventDefault();
+    setToggleAddress(!toggleAddress);
+  };
+
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    setAddressInfo({ ...addressInfo, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateAddress(addressInfo);
+    setToggleAddress(!toggleAddress);
+  };
+
+  console.log(addressInfo);
 
   return (
-    <div className="p-20 flex flex-col justify-between gap-8 md:flex-row">
-      <div className="flex flex-col justify-center items-center">
-        <img className="w-[250px]" src={avatar} alt="avatar" />
+    <div className="text-center">
+      <div className="p-20 flex flex-col justify-between gap-8 md:flex-row">
+        <div className="flex flex-col justify-center items-center">
+          <img
+            className="w-[250px]"
+            src={avatar || defaultAvatar}
+            alt="avatar"
+          />
 
-        <h1 className="text-2xl">
-          {currentUser.first_name} {currentUser.last_name}
-        </h1>
-        <p className="text-lg">{purse}$</p>
+          <h1 className="text-2xl">
+            {currentUser.first_name} {currentUser.last_name}
+          </h1>
+          <p className="text-lg">{purse}$</p>
 
-        <button
-          type="button"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all duration-200"
-          onClick={() => setShowModal(true)}
-        >
-          UPDATE
-        </button>
-        {showModal && <ProfileUpdateModal setShowModal={setShowModal} />}
+          <button
+            type="button"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all duration-200"
+            onClick={() => setShowModal(true)}
+          >
+            UPDATE
+          </button>
+          {showModal && <ProfileUpdateModal setShowModal={setShowModal} />}
+        </div>
+
+        <div className="flex flex-col justify-center items-center"></div>
+        <p>Sipariş Bilgileri Olacak</p>
       </div>
 
-      <div className="flex flex-col justify-center items-center"></div>
-      <p>Sipariş Bilgileri Olacak</p>
+      <form className="p-4" onSubmit={handleSubmit}>
+        <p className="font-bold text-gray-600">My Address</p>
+
+        {toggleAddress ? (
+          <>
+            <input
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-4"
+              type="text"
+              name="address"
+              value={addressInfo?.address || ""}
+              onChange={handleChange}
+            />
+            <input
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-4"
+              type="text"
+              name="city"
+              value={addressInfo?.city || ""}
+              onChange={handleChange}
+            />
+            <input
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-4"
+              type="text"
+              name="country"
+              value={addressInfo?.country || ""}
+              onChange={handleChange}
+            />
+          </>
+        ) : (
+          <>
+            <p>{addressInfo?.address}</p>
+            <p>{addressInfo?.city}</p>
+            <p>{addressInfo?.country}</p>
+          </>
+        )}
+
+        {toggleAddress ? (
+          <button
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-all duration-200"
+            type="submit"
+          >
+            Update
+          </button>
+        ) : (
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all duration-200"
+            type="button"
+            onClick={handleEdit}
+          >
+            Edit
+          </button>
+        )}
+      </form>
     </div>
   );
 };
