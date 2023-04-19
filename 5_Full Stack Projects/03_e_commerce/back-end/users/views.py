@@ -1,13 +1,12 @@
-from rest_framework.generics import CreateAPIView, RetrieveUpdateAPIView
+from rest_framework.generics import CreateAPIView
 from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
-from rest_framework.permissions import IsAuthenticated
 
-from .models import Profile
+
 from .permissions import IsOwnerOrStaff
-from .serializers import RegisterSerializer, ProfileSerializer
+from .serializers import RegisterSerializer
 
 class RegisterAPI(CreateAPIView):
     queryset = User.objects.all()
@@ -22,9 +21,3 @@ class RegisterAPI(CreateAPIView):
         data["key"] = token.key
         headers = self.get_success_headers(serializer.data)
         return Response(data, status=status.HTTP_201_CREATED, headers=headers)
-    
-
-class ProfileUpdateView(RetrieveUpdateAPIView):
-    serializer_class = ProfileSerializer
-    queryset = Profile.objects.all()
-    permission_classes = [IsOwnerOrStaff, IsAuthenticated]

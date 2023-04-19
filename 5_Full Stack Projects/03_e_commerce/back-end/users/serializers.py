@@ -2,7 +2,6 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
-from .models import Profile
 
 from dj_rest_auth.serializers import TokenSerializer
 
@@ -61,22 +60,6 @@ class UserTokenSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', "username",'email', 'first_name', 'last_name', 'is_superuser')
-        
-class ProfileSerializer(serializers.ModelSerializer):
-    
-    user = serializers.StringRelatedField()
-    user_id = serializers.IntegerField(required=False)
-    
-    class Meta:
-        model = Profile
-        fields = ("id","user","user_id","avatar", "purse")
-        
-        
-    def update(self, instance, validated_data):
-        instance = super().update(instance, validated_data)
-        instance.user_id = self.context['request'].user.id
-        instance.save()
-        return instance
     
 class CustomTokenSerializer(TokenSerializer):
 
