@@ -12,6 +12,7 @@ const authSlice = createSlice({
     token: null,
     avatar: null,
     purse: null,
+    address: null,
   },
   reducers: {
     fetchStart: (state) => {
@@ -33,7 +34,7 @@ const authSlice = createSlice({
     },
     registerSuccess: (state, { payload }) => {
       state.loading = false;
-      state.currentUser = payload?.username;
+      state.currentUser = payload;
       state.currentUserId = payload?.id;
       state.token = payload?.key;
       state.error = false;
@@ -44,6 +45,13 @@ const authSlice = createSlice({
       state.purse = payload.purse;
       state.error = false;
     },
+
+    getAddressSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.address = payload;
+      state.error = false;
+    },
+
     fetchFail: (state) => {
       state.loading = false;
       state.error = true;
@@ -58,5 +66,6 @@ export const {
   registerSuccess,
   fetchFail,
   profileSuccess,
+  getAddressSuccess,
 } = authSlice.actions;
 export default authSlice.reducer;

@@ -7,6 +7,7 @@ import {
   logoutSuccess,
   registerSuccess,
   profileSuccess,
+  getAddressSuccess,
 } from "../features/authSlice";
 import useAxios, { axiosPublic } from "./useAxios";
 
@@ -76,7 +77,37 @@ const useAuthCalls = () => {
     }
   };
 
-  return { register, login, logout, getProfile, updateProfile };
+  const getAddress = async () => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken.get(`address/`);
+      dispatch(getAddressSuccess(data[0]));
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+    }
+  };
+
+  const updateAddress = async (info) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken.put(`address/${info.id}/`, info);
+      dispatch(getAddressSuccess(data));
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+    }
+  };
+
+  return {
+    register,
+    login,
+    logout,
+    getProfile,
+    updateProfile,
+    getAddress,
+    updateAddress,
+  };
 };
 
 export default useAuthCalls;
