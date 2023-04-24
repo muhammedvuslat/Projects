@@ -50,10 +50,9 @@ const useProductCalls = () => {
     }
   };
 
-  const createOrder = async (id, setOrderItems) => {
+  const createOrder = async (orderInfo) => {
     try {
-      const { data } = await axiosWithToken.delete(`orderitems/${id}/`);
-      getAllOrderItems(setOrderItems);
+      const { data } = await axiosWithToken.post(`order-create/`, orderInfo);
     } catch (error) {
       console.log(error);
     }
@@ -65,6 +64,7 @@ const useProductCalls = () => {
     getAllOrderItems,
     updateOrderItems,
     deleteOrderItems,
+    createOrder,
   };
 };
 

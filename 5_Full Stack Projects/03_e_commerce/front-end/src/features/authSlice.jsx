@@ -31,11 +31,11 @@ const authSlice = createSlice({
       state.token = null;
       state.avatar = null;
       state.purse = null;
+      state.address = null;
     },
     registerSuccess: (state, { payload }) => {
       state.loading = false;
       state.currentUser = payload;
-      state.currentUserId = payload?.id;
       state.token = payload?.key;
       state.error = false;
     },
