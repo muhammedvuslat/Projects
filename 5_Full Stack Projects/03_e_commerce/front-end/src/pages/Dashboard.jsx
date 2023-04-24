@@ -19,7 +19,7 @@ const Dashboard = () => {
   return (
     <div className="pt-16 ">
       <div className="text-center">
-        <h1 className="text-4xl p-8">E-Commerce</h1>
+        <h1 className="text-4xl p-8">E-Commerce by</h1>
         <img
           src={headerImage}
           alt="header"

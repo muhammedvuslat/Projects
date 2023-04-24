@@ -21,7 +21,7 @@ const OrderCards = ({ item, setOrderItems }) => {
     updateOrderItems(item.id, { quantity: product.quantity + 1 });
   };
 
-  console.log(product);
+  // console.log(product);
 
   return (
     <>

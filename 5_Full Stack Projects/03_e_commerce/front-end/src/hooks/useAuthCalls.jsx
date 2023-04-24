@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import {
   fetchFail,
@@ -15,6 +15,7 @@ const useAuthCalls = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { axiosWithToken } = useAxios();
+  const { currentUser } = useSelector((state) => state.auth);
 
   const register = async (userInfo) => {
     dispatch(fetchStart());
@@ -70,7 +71,7 @@ const useAuthCalls = () => {
         `/users/profile/${id}/`,
         profileInfo
       );
-      dispatch(profileSuccess(data));
+      getProfile(id);
     } catch (error) {
       console.log(error);
       dispatch(fetchFail());
@@ -92,7 +93,19 @@ const useAuthCalls = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosWithToken.put(`address/${info.id}/`, info);
-      dispatch(getAddressSuccess(data));
+      getAddress();
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+    }
+  };
+
+  const postAddress = async (info) => {
+    info["user"] = currentUser.id;
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken.post(`address/`, info);
+      getAddress();
     } catch (error) {
       console.log(error);
       dispatch(fetchFail());
@@ -107,6 +120,7 @@ const useAuthCalls = () => {
     updateProfile,
     getAddress,
     updateAddress,
+    postAddress,
   };
 };
 

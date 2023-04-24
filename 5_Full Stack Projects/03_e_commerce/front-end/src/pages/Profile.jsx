@@ -5,7 +5,7 @@ import defaultAvatar from "../assets/defaultAvatar.png";
 import useAuthCalls from "../hooks/useAuthCalls";
 
 const Profile = () => {
-  const { getAddress, updateAddress } = useAuthCalls();
+  const { getAddress, updateAddress, postAddress } = useAuthCalls();
   const { currentUser, avatar, purse, address } = useSelector(
     (state) => state.auth
   );
@@ -29,11 +29,16 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateAddress(addressInfo);
+    if (address) {
+      updateAddress(addressInfo);
+    } else {
+      postAddress(addressInfo);
+    }
+
     setToggleAddress(!toggleAddress);
   };
 
-  console.log(addressInfo);
+  console.log(address);
 
   return (
     <div className="text-center">
@@ -75,6 +80,7 @@ const Profile = () => {
               name="address"
               value={addressInfo?.address || ""}
               onChange={handleChange}
+              placeholder="Address"
             />
             <input
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-4"
@@ -82,6 +88,7 @@ const Profile = () => {
               name="city"
               value={addressInfo?.city || ""}
               onChange={handleChange}
+              placeholder="City"
             />
             <input
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-4"
@@ -89,6 +96,7 @@ const Profile = () => {
               name="country"
               value={addressInfo?.country || ""}
               onChange={handleChange}
+              placeholder="Country"
             />
           </>
         ) : (
@@ -104,7 +112,7 @@ const Profile = () => {
             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-all duration-200"
             type="submit"
           >
-            Update
+            {address ? "Update" : "Save"}
           </button>
         ) : (
           <button
