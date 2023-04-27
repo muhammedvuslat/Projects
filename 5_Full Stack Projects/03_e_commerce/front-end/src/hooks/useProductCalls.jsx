@@ -58,6 +58,15 @@ const useProductCalls = () => {
     }
   };
 
+  const getOrders = async (setAllOrders) => {
+    try {
+      const { data } = await axiosWithToken.get(`orders-list/`);
+      setAllOrders(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return {
     getAllItems,
     addOrderItem,
@@ -65,6 +74,7 @@ const useProductCalls = () => {
     updateOrderItems,
     deleteOrderItems,
     createOrder,
+    getOrders,
   };
 };
 

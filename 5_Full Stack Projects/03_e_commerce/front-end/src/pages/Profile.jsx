@@ -3,18 +3,23 @@ import { useSelector } from "react-redux";
 import ProfileUpdateModal from "../components/ProfileUpdateModal";
 import defaultAvatar from "../assets/defaultAvatar.png";
 import useAuthCalls from "../hooks/useAuthCalls";
+import useProductCalls from "../hooks/useProductCalls";
+import OrderCard from "../components/OrderCard";
 
 const Profile = () => {
   const { getAddress, updateAddress, postAddress } = useAuthCalls();
+  const { getOrders } = useProductCalls();
   const { currentUser, avatar, purse, address } = useSelector(
     (state) => state.auth
   );
   const [showModal, setShowModal] = useState(false);
   const [toggleAddress, setToggleAddress] = useState(false);
   const [addressInfo, setAddressInfo] = useState(address || "");
+  const [allOrders, setAllOrders] = useState("");
 
   useEffect(() => {
     currentUser.id && getAddress();
+    getOrders(setAllOrders);
   }, []);
 
   const handleEdit = (e) => {
@@ -37,8 +42,6 @@ const Profile = () => {
 
     setToggleAddress(!toggleAddress);
   };
-
-  console.log(address);
 
   return (
     <div className="text-center">
@@ -66,7 +69,11 @@ const Profile = () => {
         </div>
 
         <div className="flex flex-col justify-center items-center"></div>
-        <p>Sipariş Bilgileri Olacak</p>
+        {allOrders ? (
+          allOrders?.map((order) => <OrderCard key={order.id} order={order} />)
+        ) : (
+          <p>You have no orders yet!</p>
+        )}
       </div>
 
       <form className="p-4" onSubmit={handleSubmit}>
