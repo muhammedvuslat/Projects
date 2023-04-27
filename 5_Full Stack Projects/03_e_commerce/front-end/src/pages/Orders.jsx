@@ -9,7 +9,6 @@ const Orders = () => {
   const { getAllOrderItems, createOrder } = useProductCalls();
   const { updateProfile } = useAuthCalls();
   const [orderItems, setOrderItems] = useState([]);
-  const [orderInfo, setOrderInfo] = useState("");
   const { address, currentUser, avatar, purse } = useSelector(
     (state) => state.auth
   );
@@ -19,33 +18,38 @@ const Orders = () => {
     getAllOrderItems(setOrderItems);
   }, []);
 
-  const handleOrder = () => {
+  const [orderInfo, setOrderInfo] = useState({
+    user_id: currentUser.id,
+    items: null,
+    address_id: address.id,
+    ordered: true,
+    payment: true,
+  });
+
+  useEffect(() => {
+    setOrderInfo({ ...orderInfo, items: orderItems.map((item) => item.id) });
+  }, [orderItems]);
+
+  const handleOrder = async () => {
     const orderTotalPrice = orderItems?.reduce(
       (acc, val) => val.item_total_price + acc,
       0
     );
-    let itemIds = orderItems.map((item) => item.id);
-    if (orderTotalPrice <= purse) {
-      setOrderInfo({
-        user: currentUser.id,
-        items: itemIds,
-        address_id: address.id,
-        ordered: true,
-        payment: true,
-      });
 
+    if (orderTotalPrice <= purse) {
       updateProfile(currentUser.id, {
         avatar: avatar,
         purse: purse - orderTotalPrice,
       });
 
-      createOrder(orderInfo);
+      await createOrder(orderInfo);
+      setOrderItems([]);
     } else {
       alert("You don't have enough money in your purse");
     }
   };
 
-  console.log(orderItems?.reduce((acc, val) => val.item_total_price + acc, 0));
+  // console.log(orderInfo);
 
   return (
     <div className="pt-20 text-center p-8">
@@ -81,8 +85,10 @@ const Orders = () => {
             </button>
           )}
         </div>
+
         <button
           className="text-white bg-[rgb(31,41,55)] hover:bg-[rgb(112,133,173)] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition-all"
+          disabled={orderItems.length < 1 && true}
           onClick={handleOrder}
         >
           ORDER
