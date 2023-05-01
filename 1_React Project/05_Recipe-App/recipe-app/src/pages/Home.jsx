@@ -9,7 +9,7 @@ const Home = () => {
   const APP_ID = "e9ad5c8c";
   const APP_KEY = "359bb19e1143a5bb4679c215903c1cb7";
 
-  const [query, setQuery] = useState("tomato");
+  const [query, setQuery] = useState("egg");
   const [selectedMeal, setSelectedMeal] = useState("Breakfast");
   const [recipes, setRecipes] = useState(null);
   const mealType = ["Breakfast", "Lunch", "Dinner", "Snack", "Teatime"];
