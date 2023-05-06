@@ -25,7 +25,6 @@ const Cards = ({ recipes }) => {
             <CardButton
               onClick={() => {
                 navigate("detail", { state: recipe, replace: false });
-                console.log(recipe);
               }}
             >
               View More

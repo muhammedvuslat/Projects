@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Flex from "../global.style/Flex.style";
+import { Link } from "react-router-dom";
 
 export const LoginContainer = styled(Flex)`
   height: 100vh;
@@ -41,7 +42,7 @@ export const StyledInput = styled.input`
   margin: 1rem;
   text-indent: 1rem;
 `;
-export const StyledButton = styled.button`
+export const StyledLButton = styled.button`
   /* Login Container */
   font-size: 2rem;
   background-color: rgba(0, 0, 0, 0.6);
@@ -50,6 +51,21 @@ export const StyledButton = styled.button`
   border: none;
   margin: 1rem;
   cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+export const StyledRButton = styled(Link)`
+  /* Login Container */
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  color: wheat;
+  border: none;
+  margin: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
   &:hover {
     opacity: 0.8;
   }

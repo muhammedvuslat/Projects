@@ -11,7 +11,7 @@ import {
 
 const Detail = () => {
   const { state } = useLocation();
-  console.log("State-geldiii", state);
+  // console.log("State-geldiii", state);
   return (
     <DetailContainer>
       <HeaderContainer>
