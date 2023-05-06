@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { BrandStyle, NavStyle } from "../styles/components.style/Nav.style";
+import {
+  BrandStyle,
+  Hamburger,
+  MenuLink,
+  MenuStyled,
+  NavStyle,
+} from "../styles/components.style/Nav.style";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,20 +16,20 @@ const Navbar = () => {
         <i>{"Vuslat/"}</i>
         <span>Recipe</span>
       </BrandStyle>
-      <div
+      <Hamburger
         className="Hamburger"
         onClick={() => {
           setIsOpen(!isOpen);
         }}
       >
         <GiHamburgerMenu />
-      </div>
-      <div className="MenuStyled">
-        <p to="/">Home</p>
-        <p to="about">About</p>
-        <p to="register">Register</p>
-        <p to="/">LOG</p>
-      </div>
+      </Hamburger>
+      <MenuStyled>
+        <MenuLink to="/">Home</MenuLink>
+        <MenuLink to="about">About</MenuLink>
+        <MenuLink to="register">Register</MenuLink>
+        <MenuLink to="/">LOG</MenuLink>
+      </MenuStyled>
     </NavStyle>
   );
 };
