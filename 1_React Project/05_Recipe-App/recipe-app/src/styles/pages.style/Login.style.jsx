@@ -16,6 +16,7 @@ export const FormContainer = styled(Flex)`
   border: 4px solid #ffff;
   padding: 0.5rem;
   flex-direction: column;
+  background: rgba(26, 103, 170, 0.6);
 `;
 export const StyledImg = styled.img`
   width: 150px;
