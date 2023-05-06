@@ -1,8 +1,28 @@
+import {
+  FormContainer,
+  LoginContainer,
+  StyledImg,
+  StyledHeader,
+  StyledForm,
+  StyledInput,
+  StyledButton,
+} from "../styles/pages.style/Login.style";
+
+import meal from "../assets/meal.svg";
+
 const Login = () => {
   return (
-    <div>
-      <h1>Loginb Page</h1>
-    </div>
+    <LoginContainer>
+      <FormContainer>
+        <StyledImg src={meal} />
+        <StyledHeader>Vuslat/Recipe</StyledHeader>
+        <StyledForm>
+          <StyledInput />
+          <StyledInput />
+          <StyledButton>Button</StyledButton>
+        </StyledForm>
+      </FormContainer>
+    </LoginContainer>
   );
 };
 
