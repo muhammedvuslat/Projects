@@ -5,7 +5,8 @@ import {
   StyledHeader,
   StyledForm,
   StyledInput,
-  StyledButton,
+  StyledLButton,
+  StyledRButton,
 } from "../styles/pages.style/Login.style";
 
 import { useNavigate } from "react-router-dom";
@@ -42,7 +43,8 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <StyledButton>Button</StyledButton>
+          <StyledLButton>Login</StyledLButton>
+          <StyledRButton to="/register">Register</StyledRButton>
         </StyledForm>
       </FormContainer>
     </LoginContainer>

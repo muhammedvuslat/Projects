@@ -10,6 +10,9 @@ import {
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const userStorage = sessionStorage.length > 0;
+  const lButton = userStorage;
+
   return (
     <NavStyle justify="space-between" wrap="wrap">
       <BrandStyle to="/">
@@ -27,8 +30,11 @@ const Navbar = () => {
         <MenuLink to="/">Home</MenuLink>
         <MenuLink to="about">About</MenuLink>
         <MenuLink to="register">Register</MenuLink>
-        <MenuLink to="logout" onClick={() => sessionStorage.clear()}>
-          Logout
+        <MenuLink
+          to={lButton ? "/" : "/login"}
+          onClick={() => sessionStorage.clear()}
+        >
+          {lButton ? "Logout" : "Login"}
         </MenuLink>
       </MenuStyled>
     </NavStyle>
