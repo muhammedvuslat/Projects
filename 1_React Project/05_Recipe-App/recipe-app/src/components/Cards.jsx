@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 const Cards = ({ recipes }) => {
   const navigate = useNavigate();
   return (
-    <CardsContainer>
+    <CardsContainer wrap="wrap">
       {recipes.map(({ recipe }, index) => {
         return (
           <Card key={index}>

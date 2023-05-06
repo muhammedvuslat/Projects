@@ -4,16 +4,14 @@ import { MainButton } from "./Header.style";
 
 export const CardsContainer = styled(Flex)`
   flex-direction: row;
-  border: 2px solid red;
 `;
 
 export const Card = styled(Flex)`
   /* Card div */
-  border: 1px solid blue;
   flex-direction: column;
   height: 20rem;
   width: 20rem;
-  background-color: lightgreen;
+  background: ${({ theme }) => theme.colors.navbarBgColor};
   padding: 0.5rem;
   border-radius: 0% 2rem;
   margin: 0.7rem;
@@ -39,6 +37,8 @@ export const CardImage = styled.img`
 
 export const CardButton = styled(MainButton)`
   /* CardButton */
+  background: ${({ theme }) => theme.colors.mainColor};
+
   margin-top: 12px;
   width: 6rem;
   height: 2rem;

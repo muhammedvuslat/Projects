@@ -7,16 +7,9 @@ import {
   MainButton,
 } from "../styles/components.style/Header.style";
 
-const Header = ({
-  setQuery,
-  setSelectedMeal,
-  mealType,
-  getData,
-  selectedMeal,
-  query,
-}) => {
+const Header = ({ setQuery, setSelectedMeal, mealType, getData }) => {
   const handleSubmit = (e) => {
-    e.preaventDefault();
+    e.preventDefault();
     getData();
   };
   return (

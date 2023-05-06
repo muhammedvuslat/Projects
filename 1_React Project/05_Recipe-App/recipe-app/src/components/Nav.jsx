@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import {
   BrandStyle,
@@ -11,24 +11,25 @@ import {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <NavStyle>
-      <BrandStyle>
-        <i>{"Vuslat/"}</i>
+    <NavStyle justify="space-between" wrap="wrap">
+      <BrandStyle to="/">
+        <i>{"Vuslat/ "}</i>
         <span>Recipe</span>
       </BrandStyle>
       <Hamburger
-        className="Hamburger"
         onClick={() => {
           setIsOpen(!isOpen);
         }}
       >
         <GiHamburgerMenu />
       </Hamburger>
-      <MenuStyled>
+      <MenuStyled isOpen={isOpen} onClick={() => setIsOpen(false)}>
         <MenuLink to="/">Home</MenuLink>
         <MenuLink to="about">About</MenuLink>
         <MenuLink to="register">Register</MenuLink>
-        <MenuLink to="/">LOG</MenuLink>
+        <MenuLink to="logout" onClick={() => sessionStorage.clear()}>
+          Logout
+        </MenuLink>
       </MenuStyled>
     </NavStyle>
   );

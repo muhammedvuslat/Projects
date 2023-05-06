@@ -31,23 +31,23 @@ const Home = () => {
     }
   };
 
-  const consol = () => {
-    console.log(recipes);
-    // console.log(recipes.length);
+  // const consol = () => {
+  //   console.log(recipes);
+  //   // console.log(recipes.length);
 
-    // getData();
-  };
+  //   // getData();
+  // };
 
   return (
     <div>
-      <button
+      {/* <button
         onClick={() => {
           getData();
           consol();
         }}
       >
         Getir
-      </button>
+      </button> */}
       <div>
         <Header
           setQuery={setQuery}
