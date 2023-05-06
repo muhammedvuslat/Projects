@@ -2,9 +2,8 @@ import styled from "styled-components";
 import Flex from "../global.style/Flex.style";
 
 export const HeaderContainer = styled(Flex)`
-  /* styled.header dan değil flex inherit edilecek */
   /*Todo */
-  background-color: lightcyan;
+  background: ${({ theme }) => theme.colors.mainColor};
   flex-direction: column;
 `;
 export const MainHeader = styled.h2`
@@ -16,7 +15,6 @@ export const FormContainer = styled.form`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  border: 2px solid blue;
   border-radius: 0% 1rem;
   margin: 20px;
   padding: 20px;
@@ -50,7 +48,7 @@ export const MainButton = styled.button`
   cursor: pointer;
   font-size: 2rem;
   &:hover {
-    background-color: blue;
+    background: ${({ theme }) => theme.colors.mainColor};
     transition: all solid white;
     border: 1px solid white;
   }

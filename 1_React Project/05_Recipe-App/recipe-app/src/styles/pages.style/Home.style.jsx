@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ImgDiv = styled.div`
   /* İmg divi */
-  display: felx;
+  display: flex;
   justify-content: center;
   margin: 2rem;
 `;
