@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const NavStyle = styled(Flex)`
   padding: 1rem 1.5rem;
-  background: ${({ theme }) => theme.colors.navbarBgColor};
+  /* background: ${({ theme }) => theme.colors.navbarBgColor}; */
 `;
 
 export const BrandStyle = styled(Link)`
