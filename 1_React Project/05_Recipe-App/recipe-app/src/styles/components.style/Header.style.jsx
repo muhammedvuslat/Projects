@@ -3,7 +3,7 @@ import Flex from "../global.style/Flex.style";
 
 export const HeaderContainer = styled(Flex)`
   /*Todo */
-  background: ${({ theme }) => theme.colors.mainColor};
+  /* background: ${({ theme }) => theme.colors.mainColor}; */
   flex-direction: column;
 `;
 export const MainHeader = styled.h2`

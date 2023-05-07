@@ -1,8 +1,7 @@
 import axios from "axios";
 import { React, useState } from "react";
 import Header from "../components/Header";
-import { HeaderText, HomeImg, ImgDiv } from "../styles/pages.style/Home.style";
-import homeSvgImg from "../assets/home.svg";
+import { HeaderText, HomeDiv } from "../styles/pages.style/Home.style";
 import Cards from "../components/Cards";
 
 const Home = () => {
@@ -39,7 +38,7 @@ const Home = () => {
   // };
 
   return (
-    <div>
+    <HomeDiv recipes={recipes}>
       {/* <button
         onClick={() => {
           getData();
@@ -56,18 +55,13 @@ const Home = () => {
           getData={getData}
         />
       </div>
-      {!recipes && (
-        <ImgDiv>
-          <HomeImg src={homeSvgImg} />
-        </ImgDiv>
-      )}
 
       {recipes?.length === 0 && (
         <HeaderText>The Food can not be found</HeaderText>
       )}
 
       {recipes?.length > 0 && <Cards recipes={recipes} />}
-    </div>
+    </HomeDiv>
   );
 };
 
