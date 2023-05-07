@@ -37,6 +37,7 @@ const Home = () => {
   //   // getData();
   // };
 
+  console.log(recipes);
   return (
     <HomeDiv recipes={recipes}>
       {/* <button
