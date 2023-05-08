@@ -6,19 +6,19 @@ export const HeaderContainer = styled(Flex)`
   /* background: ${({ theme }) => theme.colors.mainColor}; */
   flex-direction: column;
 `;
-export const MainHeader = styled.h2`
-  margin-top: 1rem;
-  font-size: 3rem;
-`;
+
 export const FormContainer = styled.form`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  border-radius: 0% 1rem;
-  margin: 20px;
-  padding: 20px;
-  background-color: tomato;
+  border-radius: 50%;
+  margin: 5px;
+  padding: 90px;
+  background: rgba(109, 147, 218, 0.22);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.2px);
+  -webkit-backdrop-filter: blur(5.2px);
 `;
 export const FoodInput = styled.input`
   height: 3rem;

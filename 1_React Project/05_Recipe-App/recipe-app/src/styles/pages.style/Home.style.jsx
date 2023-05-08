@@ -14,7 +14,8 @@ export const HomeDiv = styled.div`
   background-size: cover;
   background-position: center center;
   height: 100vh;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: ${({ recipes }) => (recipes === null ? "center" : "")};
+  display: ${({ recipes }) => (recipes === null ? "flex" : "")};
 `;
