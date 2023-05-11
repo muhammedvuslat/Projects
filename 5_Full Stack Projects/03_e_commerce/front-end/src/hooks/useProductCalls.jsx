@@ -1,14 +1,24 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import useAxios, { axiosPublic } from "./useAxios";
+import { updateProductCount } from "../features/productSlice";
 
 const useProductCalls = () => {
-  const navigate = useNavigate();
   const { axiosWithToken } = useAxios();
+  const dispatch = useDispatch();
 
   const getAllItems = async (setItems) => {
     try {
       const { data } = await axiosPublic.get("items/");
+      setItems(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getSearchedItems = async (search, setItems) => {
+    try {
+      const { data } = await axiosPublic.get(`items/?search=${search}`);
       setItems(data);
     } catch (error) {
       console.log(error);
@@ -24,18 +34,22 @@ const useProductCalls = () => {
     }
   };
 
-  const getAllOrderItems = async (setOrderItems) => {
+  const getAllOrderItems = async (setOrderItems = null) => {
     try {
       const { data } = await axiosWithToken.get("orderitems/");
-      setOrderItems(data);
+      dispatch(updateProductCount(data.length));
+      setOrderItems && setOrderItems(data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const updateOrderItems = async (id, info) => {
+  const updateOrderItems = async (id, info, setProduct, setOrderItems) => {
     try {
       const { data } = await axiosWithToken.patch(`orderitems/${id}/`, info);
+      console.log(data);
+      setProduct(data);
+      !data && getAllOrderItems(setOrderItems);
     } catch (error) {
       console.log(error);
     }
@@ -52,7 +66,8 @@ const useProductCalls = () => {
 
   const createOrder = async (orderInfo) => {
     try {
-      const { data } = await axiosWithToken.post(`order-create/`, orderInfo);
+      console.log(orderInfo);
+      const { data } = await axiosWithToken.post(`orders/`, orderInfo);
     } catch (error) {
       console.log(error);
     }
@@ -60,7 +75,7 @@ const useProductCalls = () => {
 
   const getOrders = async (setAllOrders) => {
     try {
-      const { data } = await axiosWithToken.get(`orders-list/`);
+      const { data } = await axiosWithToken.get(`orders/`);
       setAllOrders(data);
     } catch (error) {
       console.log(error);
@@ -69,6 +84,7 @@ const useProductCalls = () => {
 
   return {
     getAllItems,
+    getSearchedItems,
     addOrderItem,
     getAllOrderItems,
     updateOrderItems,

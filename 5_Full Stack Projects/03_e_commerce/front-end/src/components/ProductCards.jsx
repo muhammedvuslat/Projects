@@ -3,14 +3,14 @@ import defaultProduct from "../assets/defaultProduct.png";
 import useProductCalls from "../hooks/useProductCalls";
 
 const ProductCards = ({ item }) => {
-  const { addOrderItem } = useProductCalls();
+  const { addOrderItem, getAllOrderItems } = useProductCalls();
 
-  const addCart = () => {
-    addOrderItem({
-      ordered: true,
+  const addCart = async () => {
+    await addOrderItem({
       item_id: item?.id,
       quantity: 1,
     });
+    getAllOrderItems();
   };
 
   return (

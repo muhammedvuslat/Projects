@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
@@ -9,11 +9,15 @@ import Profile from "../pages/Profile";
 import Orders from "../pages/Orders";
 
 const Approuter = () => {
+  const [items, setItems] = useState([]);
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar setItems={setItems} />
       <Routes>
-        <Route index element={<Dashboard />} />
+        <Route
+          index
+          element={<Dashboard items={items} setItems={setItems} />}
+        />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<PrivateRouter />}>
