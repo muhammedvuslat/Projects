@@ -2,23 +2,26 @@ import React, { useEffect, useState } from "react";
 import defaultProduct from "../assets/defaultProduct.png";
 import useProductCalls from "../hooks/useProductCalls";
 
-const OrderCards = ({ item, setOrderItems }) => {
-  const { updateOrderItems, getAllOrderItems, deleteOrderItems } =
-    useProductCalls();
+const UserOrderCards = ({ item, setOrderItems }) => {
+  const { updateOrderItems, deleteOrderItems } = useProductCalls();
   const [product, setProduct] = useState(item);
 
-  useEffect(() => {
-    getAllOrderItems(setOrderItems);
-  }, [product]);
-
   const decreaseQuantity = () => {
-    setProduct({ ...product, quantity: product.quantity - 1 });
-    updateOrderItems(item.id, { quantity: product.quantity - 1 });
+    updateOrderItems(
+      product.id,
+      { quantity: product.quantity - 1 },
+      setProduct,
+      setOrderItems
+    );
   };
 
   const increaseQuantity = () => {
-    setProduct({ ...product, quantity: product.quantity + 1 });
-    updateOrderItems(item.id, { quantity: product.quantity + 1 });
+    updateOrderItems(
+      product.id,
+      { quantity: product.quantity + 1 },
+      setProduct,
+      setOrderItems
+    );
   };
 
   // console.log(product);
@@ -44,9 +47,7 @@ const OrderCards = ({ item, setOrderItems }) => {
 
           <div className="flex gap-8">
             {/* <p className="font-bold">{product.item_total_price}$</p> */}
-            <p className="font-bold">
-              {product.quantity * product.item.price}$
-            </p>
+            <p className="font-bold">{product.item_total_price}$</p>
 
             <div className="flex justify-center items-center gap-4 border-2 border-gray-600 rounded-2xl px-2">
               <i
@@ -74,4 +75,4 @@ const OrderCards = ({ item, setOrderItems }) => {
   );
 };
 
-export default OrderCards;
+export default UserOrderCards;

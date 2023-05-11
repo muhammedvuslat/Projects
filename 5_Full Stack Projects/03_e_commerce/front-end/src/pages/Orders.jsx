@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import OrderCards from "../components/OrderCards";
+import UserOrderCards from "../components/UserOrderCard";
 import useProductCalls from "../hooks/useProductCalls";
 import useAuthCalls from "../hooks/useAuthCalls";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { updateProductCount } from "../features/productSlice";
 
 const Orders = () => {
   const { getAllOrderItems, createOrder } = useProductCalls();
@@ -13,21 +14,23 @@ const Orders = () => {
     (state) => state.auth
   );
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getAllOrderItems(setOrderItems);
   }, []);
 
   const [orderInfo, setOrderInfo] = useState({
-    user_id: currentUser.id,
+    // user_id: currentUser.id,
     items: null,
-    address_id: address.id,
+    address_id: address?.id,
     ordered: true,
     payment: true,
   });
 
   useEffect(() => {
     setOrderInfo({ ...orderInfo, items: orderItems.map((item) => item.id) });
+    console.log(orderInfo);
   }, [orderItems]);
 
   const handleOrder = async () => {
@@ -44,6 +47,7 @@ const Orders = () => {
 
       await createOrder(orderInfo);
       setOrderItems([]);
+      dispatch(updateProductCount(0));
     } else {
       alert("You don't have enough money in your purse");
     }
@@ -56,7 +60,11 @@ const Orders = () => {
       <p className="font-bold text-2xl mb-4 text-gray-700">My Orders</p>
       {orderItems.length > 0 ? (
         orderItems?.map((item) => (
-          <OrderCards key={item.id} item={item} setOrderItems={setOrderItems} />
+          <UserOrderCards
+            key={item.id}
+            item={item}
+            setOrderItems={setOrderItems}
+          />
         ))
       ) : (
         <p className="font-bold text-red-500">You Have Nothing In Your Cart</p>

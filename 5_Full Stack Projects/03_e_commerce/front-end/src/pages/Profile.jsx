@@ -17,6 +17,8 @@ const Profile = () => {
   const [addressInfo, setAddressInfo] = useState(address || "");
   const [allOrders, setAllOrders] = useState("");
 
+  console.log(allOrders);
+
   useEffect(() => {
     currentUser.id && getAddress();
     getOrders(setAllOrders);
