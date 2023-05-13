@@ -18,7 +18,8 @@ const Footer = () => {
           color="inherit"
         >
           My Github
-        </Link>
+        </Link>{" "}
+        {new Date().getFullYear()}
       </Typography>
     </>
   );
