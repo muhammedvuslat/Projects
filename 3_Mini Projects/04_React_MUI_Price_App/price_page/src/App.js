@@ -35,7 +35,7 @@ function App() {
         <Header />
         <Cards />
         <Content />
-        <Footer />
+        <Footer sx={{ mt: 5 }} />
       </ThemeProvider>
     </>
   );

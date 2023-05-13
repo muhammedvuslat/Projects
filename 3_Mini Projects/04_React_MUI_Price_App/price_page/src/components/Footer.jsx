@@ -9,7 +9,7 @@ const Footer = () => {
         variant="body2"
         color="secondary"
         align="center"
-        sx={{ mt: 5 }}
+        sx={{ mt: 3 }}
       >
         {"Copyright © "}
         <Link
