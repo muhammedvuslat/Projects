@@ -16,7 +16,8 @@ const themeSelect = createTheme({
     },
     secondary: {
       light: "#91e2da",
-      main: "#76DBD1",
+      main: "#529992",
+      main2: "#76DBD1",
       dark: "#529992",
     },
   },
