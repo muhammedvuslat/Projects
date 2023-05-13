@@ -7,10 +7,11 @@ const Header = () => {
     <>
       <Container>
         <Typography
+          sx={{ mt: 2 }}
           component="h1"
-          variant="h2"
+          variant="h4"
           align="center"
-          color="primary.dark"
+          // color="primary.dark"
           gutterBottom
         >
           Pricing
