@@ -7,7 +7,8 @@ import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import StarIcon from "@mui/icons-material/StarBorder";
 import { cardData } from "../data.js";
-
+import { Box, Button, CardActions } from "@mui/material";
+//! Merhaba
 const Cards = () => {
   return (
     <>
@@ -21,9 +22,13 @@ const Cards = () => {
               sm={card.title === "Enterprise" ? 12 : 6}
               md={4}
             >
-              <Card>
+              <Card sx={{ mt: 2 }}>
                 <CardHeader
-                  title={card.title}
+                  title={
+                    <Typography color="secondary" fontWeight="bold">
+                      {card.title}
+                    </Typography>
+                  }
                   subheader={card.subheader}
                   align="center"
                   // titleTypographyProps={{ align: "center" }}
@@ -33,6 +38,45 @@ const Cards = () => {
                   }
                   sx={{ backgroundColor: "primary.main" }}
                 />
+                <CardContent>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "baseline",
+                      mb: 2,
+                    }}
+                  >
+                    <Typography component="h2" variant="h4">
+                      ${card.price}
+                    </Typography>
+                    <Typography variant="h6" color="primary.dark">
+                      /mo
+                    </Typography>
+                  </Box>
+                  <ul>
+                    {card.description.map((desc, index) => (
+                      <li key={index}>
+                        <Typography
+                          component="li"
+                          variant="subtitle1"
+                          align="center"
+                        >
+                          {desc}
+                        </Typography>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    color="secondary"
+                    fullWidth
+                    variant={card.buttonVariant}
+                  >
+                    {card.buttonText}
+                  </Button>
+                </CardActions>
               </Card>
             </Grid>
           ))}
