@@ -1,4 +1,4 @@
-const tiers = [
+export const cardData = [
   {
     title: "Free",
     price: "0",
@@ -38,7 +38,7 @@ const tiers = [
   },
 ];
 
-const content = [
+export const contents = [
   {
     title: "Company",
     description: ["Team", "History", "Contact us", "Locations"],
