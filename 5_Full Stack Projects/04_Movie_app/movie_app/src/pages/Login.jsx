@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import GoogleIcon from "../assets/icons/GoogleIcon";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { signIn } from "../auth/firebase";
 
 const Login = () => {
-  //! Ayrı state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
+    signIn(email, password, navigate);
   };
 
   return (

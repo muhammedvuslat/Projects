@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GoogleIcon from "../assets/icons/GoogleIcon";
 import { createUser } from "../auth/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   //! Ayrı state
@@ -14,11 +15,13 @@ const Register = () => {
   //   lastName: "",
   //   email: "",
   //   password: "",
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
+    //! alınan email ve password bilgisini gönderiyoruz fakat kullanıcı başarılı bir şekilde register olduktan sonra main sayfaya yönlenmesi için navigati firebase.jsx sayfasında bulunan createUser a göndermemiz gerekli çünkü burada kullandığımızda hatalı register da bile maine yönlendirir. direk navigati de js dosyasında kullanamadığımız için prop olarak gönderiyoruz.
+    createUser(email, password, navigate);
+    // navigate("/");
     console.log(firstName, lastName);
-    createUser(email, password);
   };
   //! Birleştirilmiş stateler için handleSubmit işlemi
   // const handleSubmit = (e) =>
