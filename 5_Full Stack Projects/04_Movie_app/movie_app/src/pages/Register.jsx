@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import GoogleIcon from "../assets/icons/GoogleIcon";
+import { createUser } from "../auth/firebase";
 
 const Register = () => {
   //! Ayrı state
@@ -16,10 +17,8 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`firstName :${firstName}`);
-    console.log(`lastName: ${lastName}`);
-    console.log(`email :${email}`);
-    console.log(`password: ${password}`);
+    console.log(firstName, lastName);
+    createUser(email, password);
   };
   //! Birleştirilmiş stateler için handleSubmit işlemi
   // const handleSubmit = (e) =>
@@ -27,14 +26,6 @@ const Register = () => {
 
   return (
     <div className="flex justif-center">
-      <div className="form-image hidden md:block">
-        <img
-          src="https://picsum.photos/800/800"
-          alt="user"
-          className="object-cover h-screen w-full"
-        />
-      </div>
-
       <div className="overflow-hidden flex-1 h-screen justify-center items-center bg-[#23242a]">
         <div
           className={`mt-[3vh] mx-auto overflow-hidden relative w-[380px] h-[620px] rounded-[8px] bg-[#1c1c1c] before:content-[""] before:absolute before:w-[380px] before:h-[420px] before:top-[-50%] before:left-[-50%] after:content-[""] after:absolute after:w-[380px] after:h-[420px] after:top-[-50%] after:left-[-50%] custom-linear-gradient`}
