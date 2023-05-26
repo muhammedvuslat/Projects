@@ -1,8 +1,10 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
+  signOut,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 //* Your web app's Firebase configuration
@@ -26,6 +28,8 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
+// kullancının kayıt işlemlerini sağlayan fonksiyon register page de kullanılıyor
+
 export const createUser = async (email, password, navigate) => {
   try {
     let userTest = await createUserWithEmailAndPassword(auth, email, password);
@@ -36,6 +40,7 @@ export const createUser = async (email, password, navigate) => {
   }
 };
 
+// kullancının giriş yapmasını sağlar login page de çağrılır
 export const signIn = async (email, password, navigate) => {
   try {
     let loginUser = await signInWithEmailAndPassword(auth, email, password);
@@ -44,4 +49,21 @@ export const signIn = async (email, password, navigate) => {
   } catch (error) {
     console.log(error.message);
   }
+};
+
+// kullancının giriş kontrolünü sağlar ve bunun  hakkında bilgi verir
+export const userState = (setCurrenUser) => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const [email, displayName, photoURL] = user;
+      setCurrenUser({ email, displayName, photoURL });
+      console.log(`User login${user}`);
+    } else {
+      console.log("user logout");
+    }
+  });
+};
+
+export const userSignOut = () => {
+  signOut(auth);
 };
