@@ -52,11 +52,11 @@ export const signIn = async (email, password, navigate) => {
 };
 
 // kullancının giriş kontrolünü sağlar ve bunun  hakkında bilgi verir
-export const userState = (setCurrenUser) => {
+export const userState = (setCurrentUser) => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      const [email, displayName, photoURL] = user;
-      setCurrenUser({ email, displayName, photoURL });
+      const { email, displayName, photoURL } = user;
+      setCurrentUser({ email, displayName, photoURL });
       console.log(`User login${user}`);
     } else {
       console.log("user logout");
