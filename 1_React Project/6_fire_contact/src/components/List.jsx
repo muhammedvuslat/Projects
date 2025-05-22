@@ -1,65 +1,39 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { PencilSquareIcon, XCircleIcon } from "@heroicons/react/24/outline";
 
-import {
-  useGetUser,
-  delUser,
-  // getUser,
-  // setUser,
-  writeUserData,
-} from "../firebase/functions";
+import { useGetUser, delUser } from "../utils/functions";
+import { userEditFetch } from "../features/userEditSlice";
 
 const List = () => {
-  const info = {
-    iname: "Merhabab",
-    itel: 91231231512313,
-    igender: "Erkek ",
-    userID: "-OQmIU3k_sdDiZJFDyvs",
-  };
+  const dispatch = useDispatch();
 
-  const handleEkle = () => {
-    writeUserData(info);
-  };
-  // const handleSet = () => {
-  //   setUser(info);
-  // };
-  // const handleGet = () => {
-  //   console.log(useGetUser());
-  // };
-  // const handleDel = () => {
-  //   delUser(info);
-  // };
   useGetUser();
 
   const { user } = useSelector((state) => state.userList);
 
-  // const { iname, itel, igender, userID } = user;
+  const handleSet = (item) => {
+    dispatch(userEditFetch(item));
+    console.log(item.id);
+  };
+
   console.log(user);
 
   return (
     <div>
-      <div>
+      {/* <div>
         <p className="text-xl font-mono dark:text-gray-400 text-gray-900 mb-4  border-none bg-gray-50  dark:bg-gray-800 rounded-md p-5 text-center">
           Contact List
         </p>
-        <button className="bg-lime-500" onClick={() => handleEkle()}>
-          Ekle Test
-        </button>
-        {/*
-        <button className="bg-purple-800" onClick={() => handleSet()}>
-          Set Test
-        </button>*/}
-        {/* <button className="bg-pink-800" onClick={() => handleGet()}>
-          Get test
-        </button> */}
-        {/*
-        <button className="bg-yellow-500" onClick={() => handleDel()}>
-          Sil kullanıcı
-        </button> */}
+      </div> */}
+      <div>
+        <p className="text-xl font-mono text-gray-900 dark:text-white mb-4 border-none  bg-white/20 dark:bg-black/70 backdrop-blur-md rounded-md p-5 text-center shadow-md">
+          Contact List
+        </p>
       </div>
+
       <div className="relative overflow-x-auto border-none rounded-md">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400  ">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <thead className="text-xs  uppercase  text-gray-900 dark:text-white mb-4 border-none  bg-white/20 dark:bg-black/70 backdrop-blur-md rounded-md p-5 text-center shadow-md">
             <tr>
               <th scope="col" className="px-6 py-3">
                 User Name
@@ -81,8 +55,11 @@ const List = () => {
           {user?.map((item) => {
             const { id, gender, phoneNumber, userName } = item;
             return (
-              <tbody key={id} className=" text-center">
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+              <tbody
+                key={id}
+                className=" text-start bg-white/20 dark:bg-black/50 backdrop-blur-md shadow-md "
+              >
+                <tr className=" text-gray-900 dark:text-white mb-4 p-5 text-center ">
                   <th
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -97,7 +74,10 @@ const List = () => {
                   >
                     <XCircleIcon className="h-6 w-6 text-red-500 " />
                   </td>
-                  <td className="px-6 py-4 cursor-pointer ">
+                  <td
+                    onClick={() => handleSet(item)}
+                    className="px-6 py-4 cursor-pointer "
+                  >
                     <PencilSquareIcon className="h-6 w-6 text-green-600" />
                   </td>
                 </tr>

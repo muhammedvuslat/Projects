@@ -11,21 +11,21 @@ import { useDispatch } from "react-redux";
 import { getUser } from "../features/userSlice";
 import { useEffect } from "react";
 
-export const writeUserData = ({ iname, itel, igender }) => {
+export const writeUserData = ({ userName, phoneNumber, gender }) => {
   const db = getDatabase(firebase);
   push(ref(db, "users/"), {
-    userName: iname,
-    phoneNumber: itel,
-    gender: igender,
+    userName: userName,
+    phoneNumber: phoneNumber,
+    gender: gender,
   });
 };
 
-export const setUser = ({ iname, itel, igender, userID }) => {
+export const setUser = ({ id, userName, gender, phoneNumber }) => {
   const db = getDatabase(firebase);
-  set(ref(db, "users/" + userID), {
-    username: iname,
-    phoneNumber: itel,
-    gender: igender,
+  set(ref(db, "users/" + id), {
+    userName: userName,
+    phoneNumber: phoneNumber,
+    gender: gender,
   });
 };
 
