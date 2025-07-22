@@ -25,7 +25,7 @@ Welcome to **Movie App Pro**, a modern and responsive web application built with
 
 ## Screenshot
 
-![Movie App Pro Screenshot](./m_app-giff.gif)
+![Movie App Pro Screenshot](./m_app-gif.gif)
 
 ## Technologies Used
 
