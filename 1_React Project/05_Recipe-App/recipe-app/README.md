@@ -1,70 +1,151 @@
-# Getting Started with Create React App
+# Recipe App Pro 🍽️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to **Recipe App Pro**, a modern and user-friendly web application built with React for food enthusiasts to discover, explore, their favorite recipes! This project integrates with the Edamam API to fetch real-time recipe data, features a sleek interface styled with Styled Components, and includes client-side routing for seamless navigation.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Demo](#demo)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Recipe Search**: Search for recipes by keywords or meal types (e.g., breakfast, lunch, dinner).
+- **Recipe Details**: View detailed information about each recipe, including ingredients and instructions.
+- **Responsive Design**: Fully responsive UI styled with Styled Components for a consistent experience across devices.
+- **Private Routes**: Protected routes for authenticated users to access personalized features.
+- **Navigation**: Intuitive navigation with a custom navbar for easy access to all pages.
+- **Modern UI**: Clean and visually appealing interface with reusable components.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Screenshot
 
-### `npm test`
+![Recipe App Pro Screenshot](./r_app-gif.gif)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+- **React**: Frontend library for building user interfaces.
+- **React Router**: For client-side routing and navigation.
+- **Axios**: For making API requests to fetch recipe data from the Edamam API.
+- **Styled Components**: For styling the application with a component-scoped CSS-in-JS approach.
+- **React Scripts**: For project setup and build tools.
+- **Testing Libraries**: Jest, React Testing Library for unit and integration tests.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Follow these steps to set up the project locally:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the Repository**:
 
-### `npm run eject`
+2. **Install Dependencies**:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   npm install
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Set Up Environment Variables**:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   - Create a `.env` file in the root directory.
+   - Add your Edamam API credentials (API ID and API Key):
+     ```
+     REACT_APP_API_ID=your_api_id_here
+     REACT_APP_API_KEY=your_api_key_here
+     ```
+   - You can obtain these credentials by signing up at [Edamam API](https://developer.edamam.com/).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Run the Application**:
+   ```bash
+   npm start
+   ```
+   The app will be available at `http://localhost:3000`.
 
-## Learn More
+## Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Home Page**: Search for recipes by entering keywords or selecting a meal type.
+- **About Page**: Learn more about the application and its features.
+- **Recipe Details**: Click on a recipe card to view detailed information.
+- **Login/Register**: Access personalized features by logging in or creating an account (authentication is mocked in the provided code).
+- **Navigation**: Use the navbar to switch between pages seamlessly.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project Structure
 
-### Code Splitting
+```
+🍽️ Recipe App
+├── package-lock.json
+├── package.json
+├── public
+│   ├── assets
+│   │   ├── coding.svg
+│   │   ├── const.png
+│   │   ├── cw.svg
+│   │   ├── default-image.jpg
+│   │   ├── design.svg
+│   │   ├── diet.svg
+│   │   ├── growing-up-man.svg
+│   │   ├── growing-up-woman.svg
+│   │   ├── home.svg
+│   │   ├── loading.gif
+│   │   ├── logo.png
+│   │   ├── mail.svg
+│   │   ├── man.svg
+│   │   ├── map.svg
+│   │   ├── meal.svg
+│   │   ├── meal2.svg
+│   │   ├── padlock.svg
+│   │   ├── phone.svg
+│   │   └── woman.svg
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── r_app-img.png
+├── README.md
+└── src
+    ├── App.css
+    ├── App.js
+    ├── components
+    │   ├── button
+    │   ├── cards
+    │   ├── globalStyles
+    │   ├── header
+    │   └── navbar
+    ├── index.css
+    ├── index.js
+    ├── pages
+    │   ├── about
+    │   ├── detail
+    │   ├── home
+    │   ├── login
+    │   └── register
+    └── router
+    ├── AppRouter.jsx
+    └── PrivateRouter.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+Contributions are welcome! To contribute:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Make your changes and commit (`git commit -m "Add your feature"`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Create a Pull Request.
 
-### Advanced Configuration
+Please ensure your code follows the project's coding standards and includes tests where applicable.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## License
 
-### Deployment
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Happy cooking! 🥗 If you have any questions or feedback, feel free to open an issue or contact the maintainers.

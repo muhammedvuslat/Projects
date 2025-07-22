@@ -1,27 +1,24 @@
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "../components/Nav";
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import About from "../pages/About";
-import Detail from "../pages/Detail";
+import Navbar from "../components/navbar/Navbar";
+import Home from "../pages/home/Home";
+import About from "../pages/about/About";
+import Register from "../pages/register/Register";
+import Login from "../pages/login/Login";
+import Detail from "../pages/detail/Detail";
 import PrivateRouter from "./PrivateRouter";
-import { GlobalStyles } from "../styles/global.style/GlobalStyles.jsx";
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
-      <GlobalStyles />
       <Navbar />
-
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="about" element={<PrivateRouter />}>
-          <Route path="" element={<About />} />
-        </Route>
-        <Route path="detail" element={<PrivateRouter />}>
+        <Route path="/about" element={<About />} />
+        <Route path="/detail" element={<Detail />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/detail" element={<PrivateRouter />}>
           <Route path="" element={<Detail />} />
         </Route>
       </Routes>
