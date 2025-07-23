@@ -24,7 +24,7 @@ Welcome to **Pizza Order App**, a full-stack web application built with Django f
 
 ## Screenshot
 
-![Pizza Order App Screenshot](./p_app-gif)
+![Pizza Order App Screenshot](./p_app-gif.gif)
 
 ## Technologies Used
 
