@@ -1,57 +1,179 @@
-<h3>TR</h3>
-<hr/>
-<h1>Pizza App</h1>
-Bu proje, Django frameworkü kullanılarak geliştirilmiş bir giriş seviye projesidir.
+# Pizza Order App 🍕
 
-<h3>Kurulum</h3>
-Projeyi bilgisayarına indirdikten sonra, terminalde proje klasörüne giderek aşağıdaki komutları çalıştırabilirsin:
+Welcome to **Pizza Order App**, a full-stack web application built with Django for pizza lovers to browse, order, and manage their pizza orders! This project features a robust backend with Django, a SQLite database, and a user-friendly frontend for a seamless ordering experience. Users can view pizzas, place orders, update or delete them, and manage their accounts with authentication.
 
-<h5>Komutlar</h5>
-pip install -r requirements.txt <br>
-python manage.py migrate <br>
-python manage.py runserver
+## Table of Contents
 
-<h3>Kullanım</h3>
-Proje, bir pizza sipariş sistemi olarak tasarlanmıştır. Kullanıcı oluşturabilir, login ve logout işlemleri sağlanabilir ve pizzaları görüntüleyebilir, yeni siparişler oluşturabilir, var olan siparişleri güncelleyebilir veya silebilirler.
+- [Features](#features)
+- [Demo](#demo)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-<h3>Geliştirici</h3>
-Proje, <a href="https://github.com/muhammedvuslat">M.Vuslat ÇEVİK</a> tarafından geliştirilmiştir.
+## Features
 
-<h3>Eng</h3>
-<hr/>
-<h1>Pizza App</h1>
-This project is an introductory project developed using the Django framework.
+- **Browse Pizzas**: View a list of available pizzas with their toppings, prices, and images.
+- **Order Management**: Place new orders, update existing ones, or delete orders.
+- **User Authentication**: Secure login and registration for personalized order tracking.
+- **Responsive Design**: Frontend templates designed for a smooth experience across devices.
+- **Dynamic Forms**: Easily select pizza size and quantity using Django forms.
+- **Media Support**: Upload and display pizza images using Django’s media handling.
 
-<h3>Installation</h3>
-After downloading the project to your computer, you can go to the project folder in the terminal and run the following commands:
+## Screenshot
 
-<h5>Commands</h5>
-pip install -r requirements.txt <br>
-python manage.py migrate <br>
-python manage.py runserver
+![Pizza Order App Screenshot](./p_app-gif)
 
-<h3>Use</h3>
-The project is designed as a pizza ordering system. They can create users, provide login and logout operations, view pizzas, create new orders, update or delete existing orders.
+## Technologies Used
 
-<h3>Developer</h3>
-The project was developed by <a href="https://github.com/muhammedvuslat">M.Vuslat ÇEVİK</a>.
+- **Django**: Backend framework for building the application and handling authentication.
+- **Python**: Programming language for the backend logic.
+- **SQLite**: Lightweight database for storing pizza, order, and user data.
+- **Pillow**: For handling image uploads (e.g., pizza images).
+- **Python Decouple**: For managing environment variables securely.
+- **HTML/CSS**: For frontend templates and styling.
+- **Django Templates**: For rendering dynamic content on the frontend.
 
-İmg1
-<img width="1667" alt="3" src="https://user-images.githubusercontent.com/105074236/220878281-53fb304c-f353-4890-b407-f945b12d9697.png">
-İmg2
-<img width="1669" alt="2" src="https://user-images.githubusercontent.com/105074236/220878341-d967b9d4-64b1-4ca9-b7d8-12b0d9ccc65f.png">
-İmg3
-<img width="1669" alt="1" src="https://user-images.githubusercontent.com/105074236/220878348-c98e4738-53a6-4090-bf5c-7c469a57e5c0.png">
-İmg4
-<img width="1663" alt="4" src="https://user-images.githubusercontent.com/105074236/220878425-43bd980e-0397-4954-a253-654ea4be60fa.png">
-İmg5
-<img width="667" alt="5" src="https://user-images.githubusercontent.com/105074236/220878434-cd5c4a96-3174-400b-bf68-905c6ce0f530.png">
-İmg6
-<img width="1326" alt="6" src="https://user-images.githubusercontent.com/105074236/220878449-14f823e4-a285-4e56-9aa1-65c1f15a5267.png">
+## Installation
 
+Follow these steps to set up the project locally:
 
+1. **Clone the Repository**:
 
+   ```bash
+   git clone https://github.com/your-username/pizza-order-app.git
+   cd pizza-order-app
+   ```
 
+2. **Create a Virtual Environment**:
 
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
+3. **Install Dependencies**:
 
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set Up Environment Variables**:
+
+   - Create a `.env` file in the root directory.
+   - Add your Django secret key:
+     ```
+     SECRET_KEY=your_secret_key_here
+     ```
+   - Generate a secure key or use a tool like `django.core.management.utils.get_random_secret_key()`.
+
+5. **Apply Migrations**:
+
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+
+6. **Create a Superuser (Optional)**:
+
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+   This allows you to access the Django admin panel at `/admin`.
+
+7. **Run the Application**:
+   ```bash
+   python manage.py runserver
+   ```
+   The app will be available at `http://localhost:8000`.
+
+## Usage
+
+- **Home Page**: Welcome page with an overview of the application.
+- **Pizzas Page**: Browse all available pizzas with their details.
+- **Order Page**: Select a pizza, choose size and quantity, and place an order (requires login).
+- **My Orders**: View, update, or delete your orders (accessible to authenticated users).
+- **Admin Panel**: Manage pizzas, toppings, and orders at `http://localhost:8000/admin` (superuser access required).
+
+## Project Structure
+
+```
+🍕 Pizza Order App
+├── db.sqlite3
+├── main
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── manage.py
+├── media
+│   └── pizza_pics
+│       ├── favorite.jpeg
+│       ├── mahroom_pizza.jpeg
+│       ├── margarita.jpeg
+│       └── superos.jpeg
+├── pizzas
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── migrations
+│   │   ├── __init__.py
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_alter_order_size.py
+│   │   └── 0003_rename_quantiy_order_quantity.py
+│   ├── models.py
+│   ├── templates
+│   │   └── pizzas
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── README.md
+├── requirements.txt
+├── static
+│   ├── css
+│   │   └── style.css
+│   ├── images
+│   │   ├── nav-logo.png
+│   │   └── pizzaback.jpg
+│   └── js
+│       └── timeout.js
+└── users
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── forms.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── templates
+    │   └── users
+    ├── tests.py
+    ├── urls.py
+    └── views.py
+
+```
+
+## Contributing
+
+Contributions are welcome! To contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Make your changes and commit (`git commit -m "Add your feature"`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Create a Pull Request.
+
+Please ensure your code follows Django’s best practices and includes appropriate tests.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+Enjoy your pizza! 🍕 If you have any questions or feedback, feel free to open an issue or contact the maintainers.
