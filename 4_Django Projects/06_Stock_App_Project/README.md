@@ -25,7 +25,7 @@ Welcome to **Stock App**, a backend-focused Django application designed for effi
 
 ## Screenshot
 
-![Stock App Screenshot](./s_app-gif.gif)
+![Stock App Screenshot](./s-app_gif.gif)
 
 ## Technologies Used
 
